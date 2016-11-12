@@ -1,0 +1,16 @@
+
+<div *ngIf="!auth.authenticated()" class="well">
+  <h4>You are not logged in.</h4>
+  <p><b>TODO:</b> Actual home page here</p>
+  <button class="btn btn-primary btn-lg" (click)="auth.login()">Log In</button>
+</div>
+
+<div *ngIf="auth.authenticated()">
+  <h4>You are logged in</h4>
+  <p>
+    <b>TODO:</b> Redirect to <a routerLink="/list" routerLinkActive="active">/list</a>
+  </p>
+  <button class="btn btn-primary" (click)="securedPing()">Secured Ping</button>
+  <h2>{{message}}</h2>
+  <h2>{{errors}}</h2>
+</div>
