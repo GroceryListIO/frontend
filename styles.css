@@ -49,8 +49,9 @@ nav a.router-link-active {
   color: #039be5;
 }
 
-.well {
-  text-align: center;
+.mdl-layout__header-row > .mdl-layout-title {
+  text-decoration: none;
+  color: white;
 }
 
 /* items class */

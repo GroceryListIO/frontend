@@ -3,6 +3,7 @@ import { BrowserModule  }      from '@angular/platform-browser';
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+
 import { AppComponent }        from './app.component';
 import { HomeComponent }       from './home/home.component';
 import { ListComponent }       from './list/list.component';

@@ -1,5 +1,7 @@
-import { Component }         from '@angular/core';
-import { Auth }              from './auth/auth.service';
+import { Component }    from '@angular/core';
+import { Auth }         from './auth/auth.service';
+
+declare var componentHandler: any;
 
 @Component({
     selector: 'my-app',
@@ -9,4 +11,9 @@ import { Auth }              from './auth/auth.service';
 
 export class AppComponent {
   constructor(private auth: Auth) {}
+
+  ngAfterViewInit() {
+    // Ensure material-design-lite effects are applied
+    componentHandler.upgradeDom();
+  }
 };

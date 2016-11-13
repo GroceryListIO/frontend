@@ -1,13 +1,38 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Smart Grovery List</a>
-      <button class="btn btn-default btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
-      <button class="btn btn-default btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
-    </div>
-  </div>
-</nav>
 
-<main class="container">
-  <router-outlet></router-outlet>
-</main>
+<div mdl class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <a href="#" class="mdl-layout-title" routerLink="/" routerLinkActive="active">Smart Grocery List</a>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">Login</a>
+        <a class="mdl-navigation__link" href="#" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Menu</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+
+      <div class="mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="mdl-layout-spacer"></div>
+      </div>
+
+    </div>
+  </main>
+</div>
