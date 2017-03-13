@@ -1,18 +1,17 @@
-<div class="col-md-6 col-md-offset-3">
   <h2>Login</h2>
   <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" name="username" ngModel #first="ngModel" required />
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" name="password" ngModel required />
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary">Login</button>
-    </div>
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-    <div *ngIf="info" class="alert alert-info">{{info}}</div>
-  </form>
-</div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" name="email" id="email" ngModel required>
+    <label class="mdl-textfield__label" for="email">Email...</label>
+  </div><br>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="password" name="password" id="password" ngModel required>
+    <label class="mdl-textfield__label" for="password">Password...</label>
+  </div><br>
+
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Login</button>
+  
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</form>
