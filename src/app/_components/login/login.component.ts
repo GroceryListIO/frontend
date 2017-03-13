@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(f: NgForm) {
-    this.authService.login(f.value.username, f.value.password)
+    this.authService.login(f.value.email, f.value.password)
     .subscribe(
       resp => {
         this.router.navigate(['/lists'])

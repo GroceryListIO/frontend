@@ -1,8 +1,13 @@
 <div class="col-md-6 col-md-offset-3">
-  <h2>Lists:</h2>
-  <ul >
-    <li *ngFor='let list of lists | json'>
-      <b>{{list.value.name}}</b> - {{list.value.description}}
+
+  <h2>Lists</h2>
+
+  <ul class="demo-list-item mdl-list">
+    <li class="mdl-list__item" *ngFor='let list of lists | json'>
+      <span class="mdl-list__item-primary-content">
+        <b>{{list.value.name}}</b> - {{list.value.description}}
+      </span>
     </li>
   </ul>
+
 </div>
