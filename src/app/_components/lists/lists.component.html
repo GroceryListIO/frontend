@@ -1,7 +1,8 @@
-Lists<br>
-
-<ul >
-  <li *ngFor='let list of lists | json'>
-    <b>{{list.value.name}}</b> - {{list.value.description}}
-  </li>
-</ul>
+<div class="col-md-6 col-md-offset-3">
+  <h2>Lists:</h2>
+  <ul >
+    <li *ngFor='let list of lists | json'>
+      <b>{{list.value.name}}</b> - {{list.value.description}}
+    </li>
+  </ul>
+</div>
