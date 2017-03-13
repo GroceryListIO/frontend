@@ -9,14 +9,12 @@ import { AuthService } from './_services/auth/auth.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
-import { SecuredComponent } from './_components/secured/secured.component';
 import { ListsComponent } from './_components/lists/lists.component';
 import { JsonPipe } from './_services/json.pipe';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'secured', component: SecuredComponent },
   { path: 'lists', component: ListsComponent },
 ];
 
@@ -25,7 +23,6 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    SecuredComponent,
     ListsComponent,
     JsonPipe
   ],

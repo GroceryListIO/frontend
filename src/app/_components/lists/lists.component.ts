@@ -19,9 +19,6 @@ export class ListsComponent implements OnInit {
     .subscribe(
       resp => {
         this.lists = resp;
-        console.log("Type of this.lists: %s", typeof this.lists);
-        console.log("Type of resp: %s", typeof resp);
-        console.log(this.lists);
       }, error => {
         throw(error);
       }
