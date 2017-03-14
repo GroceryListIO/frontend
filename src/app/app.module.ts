@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { ListsComponent } from './_components/lists/lists.component';
+import { FooterComponent } from './_components/footer/footer.component';
 import { JsonPipe } from './_services/json.pipe';
 
 const appRoutes: Routes = [
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     ListsComponent,
-    JsonPipe
+    JsonPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

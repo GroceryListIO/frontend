@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './_services/auth/auth.service';
+import { FooterComponent } from './_components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
