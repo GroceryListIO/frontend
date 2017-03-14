@@ -15,6 +15,7 @@ export class ListsComponent implements OnInit {
 
   ngOnInit() {
     // get users from secure api end point
+    console.log("initalizing lists component.");
     this.listService.getLists()
     .subscribe(
       resp => {

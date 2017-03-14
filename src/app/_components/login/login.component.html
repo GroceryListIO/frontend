@@ -12,6 +12,8 @@
   </div><br>
 
   <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Login</button>
-  
+
+
   <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 </form>
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" (click)="authService.logout()">Logout</button>
