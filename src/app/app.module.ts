@@ -5,18 +5,20 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthService } from './_services/auth/auth.service';
+import { JsonPipe } from './_services/json.pipe';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { ListsComponent } from './_components/lists/lists.component';
 import { FooterComponent } from './_components/footer/footer.component';
-import { JsonPipe } from './_services/json.pipe';
+import { ItemsComponent } from './_components/items/items.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'lists', component: ListsComponent },
+  { path: 'lists/:listID', component: ItemsComponent },
 ];
 
 @NgModule({
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     ListsComponent,
     JsonPipe,
-    FooterComponent
+    FooterComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
