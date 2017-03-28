@@ -1,10 +1,10 @@
 {
-  "name": "angular2-test-auth",
+  "name": "angular2-frontend",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "CC-BY-NC-ND-3.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -41,6 +41,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "~2.0.0"
+    "typescript": "~2.1.0"
   }
 }
