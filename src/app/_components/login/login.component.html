@@ -1,5 +1,8 @@
-  <h2>Login</h2>
-  <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+<h2>Login</h2>
+
+<label *ngIf="error" class="alert alert-danger">{{error}}</label>
+
+<form #f="ngForm" (ngSubmit)="login(f)" novalidate>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text" name="email" id="email" ngModel required>
@@ -11,9 +14,7 @@
     <label class="mdl-textfield__label" for="password">Password...</label>
   </div><br>
 
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Login</button>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Login</button>
+  <button type=button routerLink="/register" class="mdl-button mdl-js-button mdl-js-ripple-effect">Register</button>
 
-
-  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 </form>
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" (click)="authService.logout()">Logout</button>

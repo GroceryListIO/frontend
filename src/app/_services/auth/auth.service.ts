@@ -49,6 +49,23 @@ export class AuthService {
     );
   }
 
+  register(email: string, password: string): Observable<boolean> {
+    return this.http.post('http://localhost:8080/register', { email: email, password: password })
+      .map((response: Response) => {
+        let token = response.json() && response.json().token;
+        if (token) {
+          // set token
+          this.token = token;
+          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
+          this.isAuthenticated = true;
+          return token;
+        } else {
+          return false;
+        }
+      }
+    );
+  }
+
   logout(): void {
     console.log("logging out");
     this.isAuthenticated = false;
