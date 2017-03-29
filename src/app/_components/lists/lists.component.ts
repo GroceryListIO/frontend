@@ -11,11 +11,11 @@ import { ListsService } from '../../_services/lists/lists.service';
 export class ListsComponent implements OnInit {
   lists = {};
 
-  constructor(private listService: ListsService) { }
+  constructor(private listsService: ListsService) { }
 
   ngOnInit() {
     // get users from secure api end point
-    this.listService.getLists()
+    this.listsService.getLists()
     .subscribe(
       resp => {
         this.lists = resp;

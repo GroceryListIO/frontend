@@ -1,0 +1,9 @@
+<h2>Items</h2>
+
+<ul class="demo-list-item mdl-list">
+  <li class="mdl-list__item" *ngFor='let item of list | json'>
+    <span class="mdl-list__item-primary-content">
+      {{item.value.name}}
+    </span>
+  </li>
+</ul>

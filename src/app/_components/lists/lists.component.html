@@ -1,13 +1,9 @@
-<div class="col-md-6 col-md-offset-3">
+<h2>Lists</h2>
 
-  <h2>Lists</h2>
-
-  <ul class="demo-list-item mdl-list">
-    <li class="mdl-list__item" *ngFor='let list of lists | json'>
-      <span class="mdl-list__item-primary-content">
-        <b>{{list.value.name}}</b> - {{list.value.description}}
-      </span>
-    </li>
-  </ul>
-
-</div>
+<ul class="demo-list-item mdl-list">
+  <li class="mdl-list__item" *ngFor='let list of lists | json'>
+    <span class="mdl-list__item-primary-content">
+      <a routerLink="/lists/{{list.value._id}}">{{list.value.name}} - {{list.value.description}}</a>
+    </span>
+  </li>
+</ul>
