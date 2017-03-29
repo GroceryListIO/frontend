@@ -12,7 +12,6 @@ import { AuthService } from '../../_services/auth/auth.service';
 
 export class LoginComponent implements OnInit {
   error = '';
-  info = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
