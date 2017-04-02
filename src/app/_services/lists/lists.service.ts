@@ -10,7 +10,7 @@ export class ListsService {
 
   public lists: Array<any>;
 
-  constructor(private http: Http, private authService: AuthService) { }
+  constructor(private http: Http, private authService: AuthService) {}
 
   getLists(): Observable<Array<any>> {
     // add jwt token to headers

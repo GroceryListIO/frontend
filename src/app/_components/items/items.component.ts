@@ -13,15 +13,31 @@ export class ItemsComponent implements OnInit {
   listID = '';
   error = '';
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute) { }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute) {
+    console.log('items constructed');
+  }
 
   ngOnInit() {
-    // get list
-    this.listID = this.route.snapshot.params['listID'];
+    // get items
+    this.getItems();
 
+    this.route.params // Subscribe to route changes incase user changes the list
+    .subscribe(
+      resp => {
+        this.getItems();
+      }, error => {
+        this.error = error;
+      }
+    );
+
+  }
+
+  getItems() {
+    this.listID = this.route.snapshot.params['listID'];
     this.itemsService.getItems(this.listID)
     .subscribe(
       resp => {
+        //console.log("Items: ");
         //console.log(resp);
       }, error => {
         this.error = error;

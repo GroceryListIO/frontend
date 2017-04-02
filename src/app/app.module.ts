@@ -15,6 +15,7 @@ import { RegisterComponent } from './_components/register/register.component';
 import { ListsComponent } from './_components/lists/lists.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { ItemsComponent } from './_components/items/items.component';
+import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     ListsComponent,
     JsonPipe,
     FooterComponent,
-    ItemsComponent
+    ItemsComponent,
+    SidebarListsComponent
   ],
   imports: [
     BrowserModule,
