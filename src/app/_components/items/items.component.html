@@ -1,9 +1,20 @@
-<h2>Items</h2>
+<h2 *ngIf="itemsService.items && itemsService.items.length > 0">Items</h2>
+<h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
 
 <ul class="demo-list-item mdl-list">
-  <li class="mdl-list__item" *ngFor='let item of list | json'>
+  <li class="mdl-list__item" *ngFor='let item of itemsService.items'>
     <span class="mdl-list__item-primary-content">
-      {{item.value.name}}
+      {{item.name}}
     </span>
+    <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item._id)"><i class="material-icons">remove_circle_outline</i></a>
   </li>
 </ul>
+
+<form #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" name="name" id="name" ngModel required>
+    <label class="mdl-textfield__label" for="name">Item...</label>
+  </div>
+
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"><i class="material-icons">add</i></button>
+</form>

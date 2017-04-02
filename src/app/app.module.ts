@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthService } from './_services/auth/auth.service';
 import { ListsService } from './_services/lists/lists.service';
+import { ItemsService } from './_services/items/items.service';
 import { JsonPipe } from './_services/json.pipe';
 
 import { AppComponent } from './app.component';
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, ListsService],
+  providers: [AuthService, ListsService, ItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
