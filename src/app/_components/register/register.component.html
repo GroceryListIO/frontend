@@ -4,17 +4,15 @@
 
 <form #f="ngForm" (ngSubmit)="register(f)" novalidate>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" name="email" id="email" ngModel required>
-    <label class="mdl-textfield__label" for="email">Email...</label>
-  </div><br>
+  <md-input-container>
+    <input mdInput placeholder="Email..." name="email" ngModel required>
+  </md-input-container><br>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password" name="password" id="password" ngModel required>
-    <label class="mdl-textfield__label" for="password">Password...</label>
-  </div><br>
+  <md-input-container>
+    <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
+  </md-input-container><br>
 
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Register</button>
-  <button type=button routerLink="/login" class="mdl-button mdl-js-button mdl-js-ripple-effect">Login</button>
+  <button md-raised-button>Register</button>
+  <button md-button type=button routerLink="/register">Login</button>
 
 </form>

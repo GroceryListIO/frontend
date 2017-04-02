@@ -1,0 +1,6 @@
+md-list-item p {
+  color: rgba(0,0,0,.54);
+}
+md-list-item {
+  cursor: pointer;
+}

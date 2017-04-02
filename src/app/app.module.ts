@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+import {MaterialModule} from '@angular/material';
+import 'hammerjs';
+
 import { AuthService } from './_services/auth/auth.service';
 import { ListsService } from './_services/lists/lists.service';
 import { ItemsService } from './_services/items/items.service';
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MaterialModule
   ],
   providers: [AuthService, ListsService, ItemsService],
   bootstrap: [AppComponent]
