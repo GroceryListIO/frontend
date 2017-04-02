@@ -15,6 +15,7 @@ export class ItemsService {
 
   getItems(id: string): Observable<boolean> {
     this.listID = id;
+    this.items = [];
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });

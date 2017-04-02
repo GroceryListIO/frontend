@@ -11,7 +11,6 @@ import { ListsService } from '../../_services/lists/lists.service';
   styleUrls: ['./lists.component.css']
 })
 export class ListsComponent implements OnInit {
-  //lists = [];
   error = '';
 
   constructor(private listsService: ListsService, private authService: AuthService) { }
@@ -21,8 +20,7 @@ export class ListsComponent implements OnInit {
     this.listsService.getLists()
     .subscribe(
       resp => {
-        //this.lists = resp;
-        console.log(this.listsService.lists);
+        //console.log(this.listsService.lists);
       }, error => {
         this.error = error;
       }
@@ -33,8 +31,7 @@ export class ListsComponent implements OnInit {
     this.listsService.newList({name: f.value.name})
     .subscribe(
       resp => {
-        //this.lists.push(resp);
-        console.log(this.listsService.lists);
+        //console.log(this.listsService.lists);
       }, error => {
         this.error = error;
       }
