@@ -8,16 +8,57 @@ import { AuthService } from '../auth/auth.service';
 @Injectable()
 export class ItemsService {
 
+  public items: Array<any>;
+  listID: string;
+
   constructor(private http: Http, private authService: AuthService) { }
 
-  getList(id: string): Observable<boolean> {
+  getItems(id: string): Observable<boolean> {
+    this.listID = id;
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
     let url = "http://localhost:8080/lists/" + id + "/items";
 
     return this.http.get(url, options)
-      .map((response: Response) => response.json());
+      .map((response: Response) => {
+        this.items = response.json();
+        return response.json();
+      });
+  }
+
+  newItem(item): Observable<Array<any>> {
+    // add jwt token to headers
+    let headers = new Headers({ 'Authorization': this.authService.token });
+    let options = new RequestOptions({ headers: headers });
+    let url = "http://localhost:8080/lists/" + this.listID + "/items";
+
+    return this.http.post(url, item, options)
+      .map((response: Response) => {
+        this.items.push(response.json());
+        //console.log(response.json());
+        return response.json();
+      });
+  }
+
+  deleteItem(itemID): Observable<Response> {
+    // add jwt token to headers
+    let headers = new Headers({ 'Authorization': this.authService.token });
+    let options = new RequestOptions({ headers: headers });
+    let url = "http://localhost:8080/lists/" + this.listID + "/items/" + itemID;
+
+    return this.http.delete(url, options)
+      .map((response: Response) => {
+        //console.log(response);
+        if (response.status === 200) { // Delete it out of in memoery  items
+          for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i]._id == itemID) {
+              this.items.splice(i, 1);
+            }
+          }
+        }
+        return response;
+      });
   }
 
 }
