@@ -5,3 +5,7 @@ md-list-item {
 app-items {
   width: 100%
 }
+
+.bottomInput {
+  margin-top: 12px;
+}

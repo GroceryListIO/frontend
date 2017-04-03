@@ -10,10 +10,10 @@
      </a>
    </md-list-item>
 
-   <md-list-item>
+   <md-list-item class="bottomInput">
      <form  md-line #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
        <md-input-container>
-         <input mdInput  md-line placeholder="Item..." name="name" ngModel required>
+         <input mdInput  md-line placeholder="Item..." name="name" ngModel required autocomplete="off">
        </md-input-container>
      </form>
    </md-list-item>
