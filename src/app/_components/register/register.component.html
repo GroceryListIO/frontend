@@ -1,18 +1,20 @@
-<h2>Register</h2>
+<div class="contentWrapper">
+  <h2>Register</h2>
 
-<label *ngIf="error" class="alert alert-danger">{{error}}</label>
+  <label *ngIf="error" class="alert alert-danger">{{error}}</label>
 
-<form #f="ngForm" (ngSubmit)="register(f)" novalidate>
+  <form #f="ngForm" (ngSubmit)="register(f)" novalidate>
 
-  <md-input-container>
-    <input mdInput placeholder="Email..." name="email" ngModel required>
-  </md-input-container><br>
+    <md-input-container>
+      <input mdInput placeholder="Email..." name="email" ngModel required>
+    </md-input-container><br>
 
-  <md-input-container>
-    <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
-  </md-input-container><br>
+    <md-input-container>
+      <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
+    </md-input-container><br>
 
-  <button md-raised-button>Register</button>
-  <button md-button type=button routerLink="/register">Login</button>
+    <button md-raised-button>Register</button>
+    <button md-button type=button routerLink="/register">Login</button>
 
-</form>
+  </form>
+</div>

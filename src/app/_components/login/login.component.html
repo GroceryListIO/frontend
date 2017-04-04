@@ -1,18 +1,20 @@
-<h2>Login</h2>
+<div class="contentWrapper">
+  <h2>Login</h2>
 
-<label *ngIf="error" class="alert alert-danger">{{error}}</label>
+  <label *ngIf="error" class="alert alert-danger">{{error}}</label>
 
-<form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+  <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
 
-  <md-input-container>
-    <input mdInput placeholder="Email..." name="email" ngModel required>
-  </md-input-container><br>
+    <md-input-container>
+      <input mdInput placeholder="Email..." name="email" ngModel required>
+    </md-input-container><br>
 
-  <md-input-container>
-    <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
-  </md-input-container><br>
+    <md-input-container>
+      <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
+    </md-input-container><br>
 
-  <button md-raised-button>Login</button>
-  <button md-button type=button routerLink="/register">Register</button>
+    <button md-raised-button>Login</button>
+    <button md-button type=button routerLink="/register">Register</button>
 
-</form>
+  </form>
+</div>
