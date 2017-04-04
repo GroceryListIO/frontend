@@ -13,9 +13,7 @@ export class ItemsComponent implements OnInit {
   listID = '';
   error = '';
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute) {
-    console.log('items constructed');
-  }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute) { }
 
   ngOnInit() {
     // get items

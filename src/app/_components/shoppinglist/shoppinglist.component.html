@@ -1,0 +1,7 @@
+<h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
+
+<md-list>
+ <md-list-item *ngFor='let item of itemsService.items'>
+   <span md-line>{{item.name}}</span>
+ </md-list-item>
+</md-list>
