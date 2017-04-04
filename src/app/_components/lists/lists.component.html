@@ -1,21 +1,19 @@
-<h2 *ngIf="listsService.lists && listsService.lists.length > 0">Lists</h2>
-<h3 *ngIf="listsService.lists && listsService.lists.length == 0">Create your first list.</h3>
+<div class="contentWrapper">
+  <h2 *ngIf="listsService.lists && listsService.lists.length > 0">Lists</h2>
+  <h3 *ngIf="listsService.lists && listsService.lists.length == 0">Create your first list.</h3>
 
-<ul class="mdl-list">
-  <li class="mdl-list__item mdl-list__item--two-line" *ngFor='let list of listsService.lists' routerLink="/lists/{{list._id}}">
-    <span class="mdl-list__item-primary-content">
-      {{list.name}}
-      <span class="mdl-list__item-sub-title">{{list.description}}</span>
-      <span *ngIf="!list.description" class="mdl-list__item-sub-title">No description</span>
-    </span>
-  </li>
-</ul>
+  <md-list>
+   <md-list-item *ngFor='let list of listsService.lists' routerLink="/lists/{{list._id}}">
+     <h4 md-line>{{list.name}}</h4>
+     <p md-line> {{list.description}} </p>
+     <p md-line *ngIf="!list.description">No description</p>
+   </md-list-item>
+  </md-list>
 
-<form #f="ngForm" (ngSubmit)="newList(f)" novalidate>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" name="name" id="name" ngModel required>
-    <label class="mdl-textfield__label" for="name">List Name...</label>
-  </div>
-
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Create</button>
-</form>
+  <form #f="ngForm" (ngSubmit)="newList(f)" novalidate>
+    <md-input-container>
+      <input mdInput placeholder="List Name..." name="name" id="name" ngModel required>
+    </md-input-container>
+    <button md-button>Create</button>
+  </form>
+</div>

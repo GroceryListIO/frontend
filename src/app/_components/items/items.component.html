@@ -1,20 +1,22 @@
-<h2 *ngIf="itemsService.items && itemsService.items.length > 0">Items</h2>
-<h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
+<div class="contentWrapper">
+  <h2 *ngIf="itemsService.items && itemsService.items.length > 0">Items</h2>
+  <h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
 
-<ul class="demo-list-item mdl-list">
-  <li class="mdl-list__item" *ngFor='let item of itemsService.items'>
-    <span class="mdl-list__item-primary-content">
-      {{item.name}}
-    </span>
-    <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item._id)"><i class="material-icons">remove_circle_outline</i></a>
-  </li>
-</ul>
+  <md-list>
+   <md-list-item *ngFor='let item of itemsService.items'>
+     <span md-line>{{item.name}}</span>
+     <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item._id)">
+       <md-icon md-list-icon>remove_circle_outline</md-icon>
+     </a>
+   </md-list-item>
 
-<form #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" name="name" id="name" ngModel required>
-    <label class="mdl-textfield__label" for="name">Item...</label>
-  </div>
+   <md-list-item class="bottomInput">
+     <form  md-line #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
+       <md-input-container>
+         <input mdInput  md-line placeholder="Item..." name="name" ngModel required autocomplete="off">
+       </md-input-container>
+     </form>
+   </md-list-item>
 
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"><i class="material-icons">add</i></button>
-</form>
+  </md-list>
+</div>

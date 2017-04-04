@@ -1,20 +1,20 @@
-<h2>Login</h2>
+<div class="contentWrapper">
+  <h2>Login</h2>
 
-<label *ngIf="error" class="alert alert-danger">{{error}}</label>
+  <label *ngIf="error" class="alert alert-danger">{{error}}</label>
 
-<form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+  <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" name="email" id="email" ngModel required>
-    <label class="mdl-textfield__label" for="email">Email...</label>
-  </div><br>
+    <md-input-container>
+      <input mdInput placeholder="Email..." name="email" ngModel required>
+    </md-input-container><br>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password" name="password" id="password" ngModel required>
-    <label class="mdl-textfield__label" for="password">Password...</label>
-  </div><br>
+    <md-input-container>
+      <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
+    </md-input-container><br>
 
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Login</button>
-  <button type=button routerLink="/register" class="mdl-button mdl-js-button mdl-js-ripple-effect">Register</button>
+    <button md-raised-button>Login</button>
+    <button md-button type=button routerLink="/register">Register</button>
 
-</form>
+  </form>
+</div>

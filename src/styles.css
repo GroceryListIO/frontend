@@ -1,0 +1,40 @@
+html, body, material-app, md-sidenav-container, .sidenav-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.page-container {
+  min-height: 100%;
+}
+
+.contentWrapper {
+  border: 1px solid rgba(0,0,0,.03);
+  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+  padding: 0 8px 8px 8px;
+  margin: 10px;
+}
+@media only screen and (min-width: 768px) {
+    .contentWrapper {
+      width: 33%;
+      margin-left: 33%;
+    }
+}
+
+md-sidenav {
+  min-width: 256px !important;
+}
+
+.title {
+  line-height: 64px;
+  padding-left: 40px;
+  min-width: 256px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: .02em;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css'

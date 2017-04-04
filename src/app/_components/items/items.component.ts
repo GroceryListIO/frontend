@@ -50,6 +50,7 @@ export class ItemsComponent implements OnInit {
     .subscribe(
       resp => {
         //console.log(resp);
+        f.reset();
       }, error => {
         this.error = error;
       }
