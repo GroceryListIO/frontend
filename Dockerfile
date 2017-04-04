@@ -6,7 +6,7 @@ EXPOSE 4200 49153
 RUN mkdir -p /app/frontend
 WORKDIR /app/frontend
 COPY . /app/frontend
-RUN rm -rf ./node_modules && npm install -g @angular/cli  && npm install
+RUN rm -rf ./node_modules && npm install -g @angular/cli && npm install
 
 # Start frontend
 CMD ["ng", "--version"]
