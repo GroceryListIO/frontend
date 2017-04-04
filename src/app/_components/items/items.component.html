@@ -1,22 +1,19 @@
-<div class="contentWrapper">
-  <h2 *ngIf="itemsService.items && itemsService.items.length > 0">Items</h2>
-  <h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
+<h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
 
-  <md-list>
-   <md-list-item *ngFor='let item of itemsService.items'>
-     <span md-line>{{item.name}}</span>
-     <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item._id)">
-       <md-icon md-list-icon>remove_circle_outline</md-icon>
-     </a>
-   </md-list-item>
+<md-list>
+ <md-list-item *ngFor='let item of itemsService.items'>
+   <span md-line>{{item.name}}</span>
+   <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item._id)">
+     <md-icon md-list-icon>remove_circle_outline</md-icon>
+   </a>
+ </md-list-item>
 
-   <md-list-item class="bottomInput">
-     <form  md-line #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
-       <md-input-container>
-         <input mdInput  md-line placeholder="Item..." name="name" ngModel required autocomplete="off">
-       </md-input-container>
-     </form>
-   </md-list-item>
+ <md-list-item class="bottomInput">
+   <form  md-line #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
+     <md-input-container class="itemName">
+       <input mdInput  md-line placeholder="Item..." name="name" ngModel required autocomplete="off">
+     </md-input-container>
+   </form>
+ </md-list-item>
 
-  </md-list>
-</div>
+</md-list>

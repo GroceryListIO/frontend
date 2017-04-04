@@ -11,7 +11,7 @@ html, body, material-app, md-sidenav-container, .sidenav-content {
 .contentWrapper {
   border: 1px solid rgba(0,0,0,.03);
   box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
-  padding: 0 8px 8px 8px;
+  padding: 0 15px 8px 15px;
   margin: 10px;
 }
 @media only screen and (min-width: 768px) {
@@ -35,6 +35,15 @@ md-sidenav {
   letter-spacing: .02em;
   font-weight: 400;
   box-sizing: border-box;
+}
+
+
+md-tab-body, .mat-tab-body-content {
+  overflow-y: hidden !important;
+}
+md-tab-header {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css'

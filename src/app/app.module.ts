@@ -19,12 +19,14 @@ import { ListsComponent } from './_components/lists/lists.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { ItemsComponent } from './_components/items/items.component';
 import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists.component';
+import { ShoppinglistComponent } from './_components/shoppinglist/shoppinglist.component';
+import { GrocerylistComponent } from './_components/grocerylist/grocerylist.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'lists', component: ListsComponent },
-  { path: 'lists/:listID', component: ItemsComponent },
+  { path: 'lists/:listID', component: GrocerylistComponent },
 ];
 
 @NgModule({
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
     JsonPipe,
     FooterComponent,
     ItemsComponent,
-    SidebarListsComponent
+    SidebarListsComponent,
+    ShoppinglistComponent,
+    GrocerylistComponent
   ],
   imports: [
     BrowserModule,

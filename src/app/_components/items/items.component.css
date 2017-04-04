@@ -9,3 +9,7 @@ app-items {
 .bottomInput {
   margin-top: 12px;
 }
+
+.itemName {
+  width: 100%;
+}
