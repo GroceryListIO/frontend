@@ -42,6 +42,19 @@ export class ItemsService {
       });
   }
 
+  updateItem(item): Observable<Array<any>> {
+    // add jwt token to headers
+    let headers = new Headers({ 'Authorization': this.authService.token });
+    let options = new RequestOptions({ headers: headers });
+    let url = "http://localhost:3000/api/items/" + item.id;
+
+    return this.http.patch(url, item, options)
+      .map((response: Response) => {
+        this.items.push(response.json());
+        return response.json();
+      });
+  }
+
   deleteItem(itemID): Observable<Response> {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });

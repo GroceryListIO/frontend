@@ -27,4 +27,16 @@ export class ShoppinglistComponent implements OnInit {
     );
   }
 
+  gotItem(item){
+    item.quantity = item.inventory; 
+    this.itemsService.updateItem(item)
+    .subscribe(
+      resp => {
+        console.log(resp);
+      }, error => {
+        this.error = error;
+      }
+    );
+  }
+
 }

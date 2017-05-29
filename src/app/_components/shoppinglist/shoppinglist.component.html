@@ -10,7 +10,7 @@
   </tr>
   <tr *ngFor='let item of itemsService.items'>
     <!-- Controls -->
-    <td *ngIf='(item.inventory - item.quantity) > 0'><button md-mini-fab><md-icon>check</md-icon></button></td>
+    <td *ngIf='(item.inventory - item.quantity) > 0'><button md-mini-fab (click)="gotItem(item)"><md-icon>check</md-icon></button></td>
     <td *ngIf='(item.inventory - item.quantity) < 1'></td>
 
     <!-- Name -->
