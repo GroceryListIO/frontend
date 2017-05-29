@@ -55,6 +55,11 @@ export class ItemsComponent implements OnInit {
     );
   }
 
+  editItem(item) {
+    console.log("edit item");
+    console.log(item);
+  }
+
   deleteItem(itemID){
     this.itemsService.deleteItem(itemID)
     .subscribe(

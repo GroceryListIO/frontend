@@ -25,3 +25,20 @@ app-items {
 button {
   float: right;
 }
+
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+th.name {
+  width: 50%;
+}
+
+table {
+  border-spacing: 2.3rem;
+}
