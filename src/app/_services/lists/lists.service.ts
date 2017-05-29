@@ -17,6 +17,9 @@ export class ListsService {
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
 
+    console.log("auth info");
+    console.log(this.authService.token);
+
     return this.http.get('http://localhost:3000/api/lists', options)
       .map((response: Response) => {
         this.lists = response.json();

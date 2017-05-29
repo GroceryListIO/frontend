@@ -22,6 +22,17 @@ export class RegisterComponent implements OnInit {
     this.authService.register(f.value.email, f.value.password)
     .subscribe(
       resp => {
+        this.login(f);
+      }, error => {
+        this.error = 'Bad username or password';
+      }
+    );
+  }
+
+  login(f: NgForm) {
+    this.authService.login(f.value.email, f.value.password)
+    .subscribe(
+      resp => {
         this.router.navigate(['/lists'])
       }, error => {
         this.error = 'Bad username or password';

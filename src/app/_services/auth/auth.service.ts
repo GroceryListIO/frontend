@@ -42,7 +42,6 @@ export class AuthService {
       .map((response: Response) => {
         console.log("Registration complete");
         console.log(response.json());
-        this.login(email, password);
       }
     );
   }
