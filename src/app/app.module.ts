@@ -10,6 +10,7 @@ import 'hammerjs';
 import { AuthService } from './_services/auth/auth.service';
 import { ListsService } from './_services/lists/lists.service';
 import { ItemsService } from './_services/items/items.service';
+import { ConfirmDialogService } from './_services/confirm-dialog/confirm-dialog.service';
 import { JsonPipe } from './_services/json.pipe';
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { ShoppinglistComponent } from './_components/shoppinglist/shoppinglist.c
 import { GrocerylistComponent } from './_components/grocerylist/grocerylist.component';
 import { HomepageComponent } from './_pages/homepage/homepage.component';
 import { HomepageCtaComponent } from './_components/homepage-cta/homepage-cta.component';
+import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     GrocerylistComponent,
     EditItemDialog,
     HomepageComponent,
-    HomepageCtaComponent
+    HomepageCtaComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +58,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MaterialModule
   ],
-  entryComponents: [ EditItemDialog ],
-  providers: [AuthService, ListsService, ItemsService],
+  entryComponents: [ EditItemDialog, ConfirmDialogComponent ],
+  providers: [AuthService, ListsService, ItemsService, ConfirmDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

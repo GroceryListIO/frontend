@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {MdDialog, MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
+import { ConfirmDialogService } from '../../_services/confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-items',
@@ -15,7 +16,7 @@ export class ItemsComponent implements OnInit {
   error = '';
   editingItem = {};
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MdDialog) { }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MdDialog, private dialogsService: ConfirmDialogService) { }
 
   ngOnInit() {
     // get items
@@ -64,14 +65,23 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(itemID){
-    this.itemsService.deleteItem(itemID)
-    .subscribe(
-      resp => {
-        console.log(resp);
-      }, error => {
-        this.error = error;
-      }
-    );
+
+    this.dialogsService
+      .confirm('Delete Item', 'Are you sure you want to delete this item?', "Delete", "Cancel")
+      .subscribe(res => {
+
+        if (res) {
+          this.itemsService.deleteItem(itemID)
+          .subscribe(
+            resp => {
+              console.log(resp);
+            }, error => {
+              this.error = error;
+            }
+          );
+        }
+      });
+
   }
 
 
