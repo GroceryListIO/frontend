@@ -15,7 +15,7 @@ export class ListsService {
   getLists(): Observable<Array<any>> {
     let params = new URLSearchParams;
     params.set('filter', JSON.stringify({'where': {'userId': this.authService.userId}}) );
-    params.set('token', this.authService.token)
+    params.set('access_token', this.authService.token)
 
     return this.http.get('http://localhost:3000/api/lists', { search: params })
       .map((response: Response) => {
@@ -26,7 +26,7 @@ export class ListsService {
 
   newList(list): Observable<Array<any>> {
     let params = new URLSearchParams;
-    params.set('token', this.authService.token)
+    params.set('access_token', this.authService.token)
 
     return this.http.post('http://localhost:3000/api/lists', list, { search: params })
       .map((response: Response) => {
