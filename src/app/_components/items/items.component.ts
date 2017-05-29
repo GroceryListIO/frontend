@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {MdDialog, MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
 
@@ -12,8 +13,9 @@ import { ItemsService } from '../../_services/items/items.service';
 export class ItemsComponent implements OnInit {
   listID = '';
   error = '';
+  editingItem = {};
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute) { }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MdDialog) { }
 
   ngOnInit() {
     // get items
@@ -28,6 +30,12 @@ export class ItemsComponent implements OnInit {
       }
     );
 
+  }
+
+  editItemDialog(item) {
+    console.log("edit item");
+    console.log(item);
+    this.dialog.open(EditItemDialog, {data: item});
   }
 
   getItems() {
@@ -55,11 +63,6 @@ export class ItemsComponent implements OnInit {
     );
   }
 
-  editItem(item) {
-    console.log("edit item");
-    console.log(item);
-  }
-
   deleteItem(itemID){
     this.itemsService.deleteItem(itemID)
     .subscribe(
@@ -71,5 +74,30 @@ export class ItemsComponent implements OnInit {
     );
   }
 
+
+}
+
+@Component({
+  selector: 'edit-item-dialog',
+  templateUrl: './edit-item-dialog.html',
+})
+export class EditItemDialog {
+
+  constructor(@Inject(MD_DIALOG_DATA) public item: any, private itemsService: ItemsService, public dialogRef: MdDialogRef<EditItemDialog>) { }
+
+  updateItem(editForm: NgForm){
+    console.log("form submission");
+    console.log(editForm.value);
+    console.log(editForm.value.id);
+    this.itemsService.updateItem(editForm.value)
+    .subscribe(
+      resp => {
+        console.log(resp);
+        this.dialogRef.close();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 
 }

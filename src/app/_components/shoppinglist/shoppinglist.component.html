@@ -3,10 +3,9 @@
 <table>
   <tr>
     <th>
-    <th class="name">Name</th>
-    <th>Needed</th>
-    <th>Aisle</th>
-    <th>Price</th>
+    <th class="text-left name">Name</th>
+    <th class="text-center">Need</th>
+    <th class="text-right">Aisle</th>
   </tr>
   <tr *ngFor='let item of itemsService.items'>
     <!-- Controls -->
@@ -17,15 +16,11 @@
     <td>{{item.name}}</td>
 
     <!-- Needed -->
-    <td>{{item.inventory - item.quantity}}</td>
+    <td class="text-center">{{item.inventory - item.quantity}}</td>
 
     <!-- Aisle -->
-    <td *ngIf='item.aisle'>{{item.aisle}}</td>
-    <td *ngIf='!item.aisle'>?</td>
-
-    <!-- Price -->
-    <td *ngIf='item.prive'>{{item.prive}}</td>
-    <td *ngIf='!item.prive'>?</td>
+    <td *ngIf='item.aisle' class="text-right">{{item.aisle}}</td>
+    <td *ngIf='!item.aisle' class="text-right">?</td>
 
   </tr>
 </table>

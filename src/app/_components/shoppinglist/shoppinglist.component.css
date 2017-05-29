@@ -2,14 +2,23 @@ table {
   width: 100%;
 }
 
-th {
-  text-align: left;
-}
 
 th.name {
-  width: 50%;
+  width: 60%;
 }
 
 table {
   border-spacing: 2.3rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
 }
