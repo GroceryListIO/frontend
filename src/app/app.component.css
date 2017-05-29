@@ -11,3 +11,8 @@ md-toolbar {
   background-color: #3f51b5;
   color: white;
 }
+
+md-toolbar a {
+  color:white;
+  text-decoration: none;
+}

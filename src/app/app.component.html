@@ -15,7 +15,10 @@
 
     <md-toolbar>
       <md-icon id="mainMenu" (click)="sidenav.open()">menu</md-icon>
-      {{title}}
+      <a routerLink="">{{title}}</a>
+      <div style="margin-left: auto; padding-right: 15px;" *ngIf="!authService.isAuthenticated">
+        <a routerLink="/login">Login</a> / <a routerLink="/register"><b>Register</b></a>
+      </div>
     </md-toolbar>
 
     <div class="page-container"><router-outlet></router-outlet></div>
