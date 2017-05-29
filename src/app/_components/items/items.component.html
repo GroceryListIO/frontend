@@ -3,7 +3,7 @@
 <md-list>
  <md-list-item *ngFor='let item of itemsService.items'>
    <span md-line>{{item.name}}</span>
-   <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item._id)">
+   <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item.id)">
      <md-icon md-list-icon>remove_circle_outline</md-icon>
    </a>
  </md-list-item>

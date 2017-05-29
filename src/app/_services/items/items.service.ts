@@ -19,7 +19,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:8080/lists/" + id + "/items";
+    let url = "http://localhost:3000/api/lists/" + id + "/items";
 
     return this.http.get(url, options)
       .map((response: Response) => {
@@ -32,7 +32,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:8080/lists/" + this.listID + "/items";
+    let url = "http://localhost:3000/api/lists/" + this.listID + "/items";
 
     return this.http.post(url, item, options)
       .map((response: Response) => {
@@ -46,14 +46,13 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:8080/lists/" + this.listID + "/items/" + itemID;
+    let url = "http://localhost:3000/api/lists/" + this.listID + "/items/" + itemID;
 
     return this.http.delete(url, options)
       .map((response: Response) => {
-        //console.log(response);
-        if (response.status === 200) { // Delete it out of in memoery  items
+        if (response.status === 204) { // Delete it out of in memoery  items
           for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i]._id == itemID) {
+            if (this.items[i].id == itemID) {
               this.items.splice(i, 1);
             }
           }

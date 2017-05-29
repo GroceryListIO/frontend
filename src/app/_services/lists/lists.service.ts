@@ -17,7 +17,7 @@ export class ListsService {
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.get('http://localhost:8080/lists', options)
+    return this.http.get('http://localhost:3000/api/lists', options)
       .map((response: Response) => {
         this.lists = response.json();
         return response.json();
@@ -29,7 +29,7 @@ export class ListsService {
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://localhost:8080/lists', list, options)
+    return this.http.post('http://localhost:3000/api/lists', list, options)
       .map((response: Response) => {
         this.lists.push(response.json());
         console.log(response.json());
