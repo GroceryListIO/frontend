@@ -17,7 +17,7 @@ import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { ListsComponent } from './_components/lists/lists.component';
 import { FooterComponent } from './_components/footer/footer.component';
-import { ItemsComponent } from './_components/items/items.component';
+import { ItemsComponent, EditItemDialog } from './_components/items/items.component';
 import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists.component';
 import { ShoppinglistComponent } from './_components/shoppinglist/shoppinglist.component';
 import { GrocerylistComponent } from './_components/grocerylist/grocerylist.component';
@@ -40,7 +40,8 @@ const appRoutes: Routes = [
     ItemsComponent,
     SidebarListsComponent,
     ShoppinglistComponent,
-    GrocerylistComponent
+    GrocerylistComponent,
+    EditItemDialog
   ],
   imports: [
     BrowserModule,
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MaterialModule
   ],
+  entryComponents: [ EditItemDialog ],
   providers: [AuthService, ListsService, ItemsService],
   bootstrap: [AppComponent]
 })
