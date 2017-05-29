@@ -1,6 +1,6 @@
 <h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
 
-<table>
+<table *ngIf="itemsService.items && itemsService.items.length > 0">
   <tr>
     <th></th>
     <th class="name">Name</th>

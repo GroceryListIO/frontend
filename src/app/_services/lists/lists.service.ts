@@ -24,6 +24,17 @@ export class ListsService {
       });
   }
 
+  getList(listId): Observable<Array<any>> {
+    let params = new URLSearchParams;
+    params.set('access_token', this.authService.token)
+
+    return this.http.get('http://localhost:3000/api/lists/' + listId, { search: params })
+      .map((response: Response) => {
+        this.lists = response.json();
+        return response.json();
+      });
+  }
+
   newList(list): Observable<Array<any>> {
     let params = new URLSearchParams;
     params.set('access_token', this.authService.token)

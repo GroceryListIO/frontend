@@ -1,6 +1,7 @@
 <div class="contentWrapper">
   <h2 *ngIf="listsService.lists && listsService.lists.length > 0">Lists</h2>
   <h3 *ngIf="listsService.lists && listsService.lists.length == 0">Create your first list.</h3>
+  <p *ngIf="listsService.lists && listsService.lists.length == 0">Shopping lists should correlate to a store such as Walmart or Costco.</p>
 
   <md-list>
    <md-list-item *ngFor='let list of listsService.lists' routerLink="/lists/{{list.id}}">
@@ -12,7 +13,7 @@
 
   <form #f="ngForm" (ngSubmit)="newList(f)" novalidate>
     <md-input-container>
-      <input mdInput placeholder="List Name..." name="name" id="name" ngModel required>
+      <input mdInput placeholder="Store Name..." name="name" id="name" ngModel required>
     </md-input-container>
     <button md-button>Create</button>
   </form>
