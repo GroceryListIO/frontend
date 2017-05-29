@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, RequestOptions, Response, URLSearchParams, QueryEncoder } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -13,14 +13,11 @@ export class ListsService {
   constructor(private http: Http, private authService: AuthService) {}
 
   getLists(): Observable<Array<any>> {
-    // add jwt token to headers
-    let headers = new Headers({ 'Authorization': this.authService.token });
-    let options = new RequestOptions({ headers: headers });
+    let params = new URLSearchParams;
+    params.set('filter', JSON.stringify({'where': {'userId': this.authService.userId}}) );
+    params.set('token', this.authService.token)
 
-    console.log("auth info");
-    console.log(this.authService.token);
-
-    return this.http.get('http://localhost:3000/api/lists', options)
+    return this.http.get('http://localhost:3000/api/lists', { search: params })
       .map((response: Response) => {
         this.lists = response.json();
         return response.json();
@@ -28,11 +25,10 @@ export class ListsService {
   }
 
   newList(list): Observable<Array<any>> {
-    // add jwt token to headers
-    let headers = new Headers({ 'Authorization': this.authService.token });
-    let options = new RequestOptions({ headers: headers });
+    let params = new URLSearchParams;
+    params.set('token', this.authService.token)
 
-    return this.http.post('http://localhost:3000/api/lists', list, options)
+    return this.http.post('http://localhost:3000/api/lists', list, { search: params })
       .map((response: Response) => {
         this.lists.push(response.json());
         console.log(response.json());

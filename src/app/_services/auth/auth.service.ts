@@ -8,13 +8,15 @@ import 'rxjs/add/operator/map'
 export class AuthService {
   public token: string;
   public isAuthenticated: boolean;
+  public userId: string;
 
   constructor(private http: Http, private router: Router) {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(currentUser);
     this.token = currentUser && currentUser.token;
     if (this.token) {
-      this.isAuthenticated = true
+      this.isAuthenticated = true;
+      this.userId = currentUser.userId;
     }
   }
 
@@ -24,11 +26,13 @@ export class AuthService {
         console.log("logging in");
         console.log(response.json());
         let token = response.json().id;
+        let userId = response.json().userId;
         if (token) {
           // set token
           this.token = token;
-          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token, userId: userId }));
           this.isAuthenticated = true;
+          this.userId = userId;
           return token;
         } else {
           return false;
