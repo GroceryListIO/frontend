@@ -1,7 +1,27 @@
 <h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
 
-<md-list>
- <md-list-item *ngFor='let item of itemsService.items'>
-   <span md-line>{{item.name}}</span>
- </md-list-item>
-</md-list>
+<table>
+  <tr>
+    <th>
+    <th class="name">Name</th>
+    <th>Needed</th>
+    <th>Aisle</th>
+  </tr>
+  <tr *ngFor='let item of itemsService.items'>
+    <!-- Controls -->
+    <td *ngIf='(item.inventory - item.quantity) > 0'><button md-mini-fab><md-icon>check</md-icon></button></td>
+    <td *ngIf='(item.inventory - item.quantity) < 1'></td>
+
+    <!-- Name -->
+    <td>{{item.name}}</td>
+
+    <!-- Quantity -->
+    <td *ngIf='item.quantity && item.inventory'>{{item.inventory - item.quantity}}</td>
+    <td *ngIf='!item.quantity || !item.inventory'>?</td>
+
+    <!-- Aisle -->
+    <td *ngIf='item.aisle'>{{item.aisle}}</td>
+    <td *ngIf='!item.aisle'>?</td>
+
+  </tr>
+</table>

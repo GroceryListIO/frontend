@@ -44,7 +44,7 @@ export class ItemsComponent implements OnInit {
   }
 
   newItem(f: NgForm) {
-    this.itemsService.newItem({name: f.value.name})
+    this.itemsService.newItem({name: f.value.name, inventory: f.value.inventory, quantity: f.value.quantity })
     .subscribe(
       resp => {
         //console.log(resp);

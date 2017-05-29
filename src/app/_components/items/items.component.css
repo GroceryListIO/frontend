@@ -13,3 +13,15 @@ app-items {
 .itemName {
   width: 100%;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 49%;
+}
+
+button {
+  float: right;
+}

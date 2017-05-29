@@ -7,13 +7,21 @@
      <md-icon md-list-icon>remove_circle_outline</md-icon>
    </a>
  </md-list-item>
-
- <md-list-item class="bottomInput">
-   <form  md-line #f="ngForm" (ngSubmit)="newItem(f)" novalidate>
-     <md-input-container class="itemName">
-       <input mdInput  md-line placeholder="Item..." name="name" ngModel required autocomplete="off">
-     </md-input-container>
-   </form>
- </md-list-item>
-
 </md-list>
+<br>
+<form  md-line #f="ngForm" (ngSubmit)="newItem(f)">
+  <p>
+    <md-input-container class="full-width">
+      <input mdInput  md-line placeholder="Item..." name="name" ngModel required autocomplete="off">
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container class="half-width">
+      <input mdInput md-line placeholder="How many do you have?" type="number" value='1' name="quantity" ngModel required autocomplete="off">
+    </md-input-container>
+    <md-input-container class="half-width">
+      <input mdInput md-line placeholder="How many do you want to have?" type="number" value='1' name="inventory" ngModel required autocomplete="off">
+    </md-input-container>
+  </p>
+  <button md-button>Submit</button><br>
+</form>
