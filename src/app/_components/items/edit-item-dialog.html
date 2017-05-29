@@ -1,0 +1,25 @@
+<form md-line #editForm="ngForm" (ngSubmit)="updateItem(editForm)">
+  <p>
+    <md-input-container class="full-width">
+      <input mdInput md-line placeholder="Item..." name="name" ngModel="{{item.name}}" required autocomplete="off">
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container class="half-width">
+      <input mdInput md-line placeholder="How many do you have?" type="number" name="quantity" ngModel="{{item.quantity}}" required autocomplete="off">
+    </md-input-container>
+    <md-input-container class="half-width">
+      <input mdInput md-line placeholder="How many do you want to have?" type="number" name="inventory" ngModel="{{item.inventory}}" required autocomplete="off">
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container class="half-width">
+      <input mdInput md-line placeholder="Aisle Number?" name="aisle" ngModel="{{item.aisle}}" autocomplete="off">
+    </md-input-container>
+    <md-input-container class="half-width">
+      <input mdInput md-line placeholder="Price?" type="text" inputmode="numeric" name="price" ngModel="{{item.price}}" autocomplete="off">
+    </md-input-container>
+  </p>
+  <input type="hidden" name="id" ngModel="{{item.id}}">
+  <button md-button>Update</button><br>
+</form>

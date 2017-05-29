@@ -1,5 +1,5 @@
 <a md-list-item routerLink="/lists">Lists</a>
 
-<a *ngFor='let list of listsService.lists' md-list-item [routerLink]="['/lists', list._id]">
+<a *ngFor='let list of listsService.lists' md-list-item [routerLink]="['/lists', list.id]">
   &nbsp; &nbsp; {{list.name}}
 </a>

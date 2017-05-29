@@ -8,39 +8,31 @@ import 'rxjs/add/operator/map'
 export class AuthService {
   public token: string;
   public isAuthenticated: boolean;
+  public userId: string;
 
   constructor(private http: Http, private router: Router) {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(currentUser);
     this.token = currentUser && currentUser.token;
-    this.checkToken();
-  }
-
-  checkToken(){
-    // Check weather if the current user has a valid token
-    if (!this.token) return false;
-    let tokenData = this.token.split('.')[1];
-    let tokenExpDate = JSON.parse(atob(tokenData)).exp;
-    if (Date.now() < +tokenExpDate) {
-      console.log("Expired Token");
-      this.logout();
-      this.isAuthenticated = false;
-      return false;
-    } else {
-      console.log("Valid Token");
+    if (this.token) {
       this.isAuthenticated = true;
-      return true;
+      this.userId = currentUser.userId;
     }
   }
 
   login(email: string, password: string): Observable<boolean> {
-    return this.http.post('http://localhost:8080/login', { email: email, password: password })
+    return this.http.post('http://localhost:3000/api/Users/login', { email: email, password: password })
       .map((response: Response) => {
-        let token = response.json() && response.json().token;
+        console.log("logging in");
+        console.log(response.json());
+        let token = response.json().id;
+        let userId = response.json().userId;
         if (token) {
           // set token
           this.token = token;
-          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token, userId: userId }));
           this.isAuthenticated = true;
+          this.userId = userId;
           return token;
         } else {
           return false;
@@ -49,19 +41,11 @@ export class AuthService {
     );
   }
 
-  register(email: string, password: string): Observable<boolean> {
-    return this.http.post('http://localhost:8080/register', { email: email, password: password })
+  register(email: string, password: string): Observable<void> {
+    return this.http.post('http://localhost:3000/api/Users', { email: email, password: password })
       .map((response: Response) => {
-        let token = response.json() && response.json().token;
-        if (token) {
-          // set token
-          this.token = token;
-          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
-          this.isAuthenticated = true;
-          return token;
-        } else {
-          return false;
-        }
+        console.log("Registration complete");
+        console.log(response.json());
       }
     );
   }
