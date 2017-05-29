@@ -13,26 +13,8 @@ export class AuthService {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(currentUser);
     this.token = currentUser && currentUser.token;
-    //this.checkToken();
     if (this.token) {
       this.isAuthenticated = true
-    }
-  }
-
-  checkToken(){
-    // Check weather if the current user has a valid token
-    if (!this.token) return false;
-    let tokenData = this.token.split('.')[1];
-    let tokenExpDate = JSON.parse(atob(tokenData)).exp;
-    if (Date.now() < +tokenExpDate) {
-      console.log("Expired Token");
-      this.logout();
-      this.isAuthenticated = false;
-      return false;
-    } else {
-      console.log("Valid Token");
-      this.isAuthenticated = true;
-      return true;
     }
   }
 
