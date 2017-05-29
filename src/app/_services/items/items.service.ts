@@ -32,12 +32,12 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:3000/api/lists/" + this.listID + "/items";
+    let url = "http://localhost:3000/api/items/";
+    item.listId = this.listID;
 
     return this.http.post(url, item, options)
       .map((response: Response) => {
         this.items.push(response.json());
-        //console.log(response.json());
         return response.json();
       });
   }
