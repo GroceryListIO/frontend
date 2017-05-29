@@ -50,7 +50,17 @@ export class ItemsService {
 
     return this.http.patch(url, item, options)
       .map((response: Response) => {
-        this.items.push(response.json());
+
+        console.log(response.status);
+
+        if (response.status === 200) { // Update in memoery items
+          for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].id == response.json().id) {
+              this.items[i] = response.json();
+            }
+          }
+        }
+
         return response.json();
       });
   }
