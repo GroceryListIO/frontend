@@ -1,6 +1,7 @@
-<h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
+<h3 *ngIf="itemsService.items && itemsService.items.length == 0">No Items</h3>
+<p *ngIf="itemsService.items && itemsService.items.length == 0">Grocery list is empty, please add some items first.</p>
 
-<table>
+<table *ngIf="itemsService.items && itemsService.items.length > 0">
   <tr>
     <th>
     <th class="text-left name">Name</th>
@@ -20,7 +21,7 @@
 
     <!-- Aisle -->
     <td *ngIf='item.aisle' class="text-right">{{item.aisle}}</td>
-    <td *ngIf='!item.aisle' class="text-right">?</td>
+    <td *ngIf='!item.aisle' class="text-right"></td>
 
   </tr>
 </table>

@@ -10,6 +10,8 @@ import 'hammerjs';
 import { AuthService } from './_services/auth/auth.service';
 import { ListsService } from './_services/lists/lists.service';
 import { ItemsService } from './_services/items/items.service';
+import { ConfirmDialogService } from './_services/confirm-dialog/confirm-dialog.service';
+import { ItemQuestionDialogService } from './_services/item-question-dialog/item-question-dialog.service';
 import { JsonPipe } from './_services/json.pipe';
 
 import { AppComponent } from './app.component';
@@ -21,8 +23,13 @@ import { ItemsComponent, EditItemDialog } from './_components/items/items.compon
 import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists.component';
 import { ShoppinglistComponent } from './_components/shoppinglist/shoppinglist.component';
 import { GrocerylistComponent } from './_components/grocerylist/grocerylist.component';
+import { HomepageComponent } from './_pages/homepage/homepage.component';
+import { HomepageCtaComponent } from './_components/homepage-cta/homepage-cta.component';
+import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
+import { ItemQuestionDialogComponent } from './_components/item-question-dialog/item-question-dialog.component';
 
 const appRoutes: Routes = [
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'lists', component: ListsComponent },
@@ -41,7 +48,11 @@ const appRoutes: Routes = [
     SidebarListsComponent,
     ShoppinglistComponent,
     GrocerylistComponent,
-    EditItemDialog
+    EditItemDialog,
+    HomepageComponent,
+    HomepageCtaComponent,
+    ConfirmDialogComponent,
+    ItemQuestionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +61,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MaterialModule
   ],
-  entryComponents: [ EditItemDialog ],
-  providers: [AuthService, ListsService, ItemsService],
+  entryComponents: [ EditItemDialog, ConfirmDialogComponent, ItemQuestionDialogComponent ],
+  providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

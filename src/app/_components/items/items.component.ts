@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {MdDialog, MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
+import { ConfirmDialogService } from '../../_services/confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-items',
@@ -15,7 +16,7 @@ export class ItemsComponent implements OnInit {
   error = '';
   editingItem = {};
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MdDialog) { }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MdDialog, private dialogsService: ConfirmDialogService) { }
 
   ngOnInit() {
     // get items
@@ -33,8 +34,6 @@ export class ItemsComponent implements OnInit {
   }
 
   editItemDialog(item) {
-    console.log("edit item");
-    console.log(item);
     this.dialog.open(EditItemDialog, {data: item});
   }
 
@@ -64,14 +63,23 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(itemID){
-    this.itemsService.deleteItem(itemID)
-    .subscribe(
-      resp => {
-        console.log(resp);
-      }, error => {
-        this.error = error;
-      }
-    );
+
+    this.dialogsService
+      .confirm('Delete Item', 'Are you sure you want to delete this item?', "Delete", "Cancel")
+      .subscribe(res => {
+
+        if (res) {
+          this.itemsService.deleteItem(itemID)
+          .subscribe(
+            resp => {
+              console.log(resp);
+            }, error => {
+              this.error = error;
+            }
+          );
+        }
+      });
+
   }
 
 
@@ -86,13 +94,10 @@ export class EditItemDialog {
   constructor(@Inject(MD_DIALOG_DATA) public item: any, private itemsService: ItemsService, public dialogRef: MdDialogRef<EditItemDialog>) { }
 
   updateItem(editForm: NgForm){
-    console.log("form submission");
-    console.log(editForm.value);
-    console.log(editForm.value.id);
     this.itemsService.updateItem(editForm.value)
     .subscribe(
       resp => {
-        console.log(resp);
+        //console.log(resp);
         this.dialogRef.close();
       }, error => {
         console.log(error);

@@ -1,0 +1,24 @@
+<div  *ngIf="!authService.isAuthenticated">
+  <h2>Sign up for a FREE acount.</h2>
+
+  <label *ngIf="error" class="alert alert-danger">{{error}}</label>
+
+  <form #f="ngForm" (ngSubmit)="register(f)">
+
+    <md-input-container style="width: 100%">
+      <input mdInput placeholder="Email..." name="email" ngModel required>
+    </md-input-container><br>
+
+    <md-input-container style="width: 100%">
+      <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
+    </md-input-container><br>
+
+    <button md-raised-button>Register</button>
+
+  </form>
+</div>
+
+<div  *ngIf="authService.isAuthenticated">
+  <h2>Welcome Back</h2>
+  <button md-raised-button routerLink="lists" style="float: right">View your lists <md-icon>keyboard_arrow_right</md-icon></button>
+</div>

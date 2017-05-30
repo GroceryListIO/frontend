@@ -1,0 +1,12 @@
+<h2>{{ question }}</h2>
+<p>{{ value }}</p>
+<p>{{ fieldType }}</p>
+
+<form #f="ngForm" (ngSubmit)="dialogRef.close(f)" novalidate>
+  <md-input-container>
+    <input mdInput name="answer" ngModel required>
+  </md-input-container>
+  <br>
+  <button type="submit" md-raised-button (click)="dialogRef.close(f)" tabindex="-1" style="float: right">Update</button>
+  <button type="button" md-button (click)="dialogRef.close()" tabindex="-1">don't know</button>
+</form>
