@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {MdDialog, MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
+import { ItemQuestionDialogService } from '../../_services/item-question-dialog/item-question-dialog.service';
 
 @Component({
   selector: 'app-shoppinglist',
@@ -12,7 +14,7 @@ export class ShoppinglistComponent implements OnInit {
   listID = '';
   error = '';
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute) { }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute, private dialogsService: ItemQuestionDialogService) { }
 
   ngOnInit() {
     this.listID = this.route.snapshot.params['listID'];
@@ -28,15 +30,42 @@ export class ShoppinglistComponent implements OnInit {
   }
 
   gotItem(item){
-    item.quantity = item.inventory; 
+    item.quantity = item.inventory;
     this.itemsService.updateItem(item)
     .subscribe(
       resp => {
         console.log(resp);
+        this.askQuestion(item);
       }, error => {
         this.error = error;
       }
     );
+  }
+
+  askQuestion(item){
+    // Main entry point to question asking.
+    if (!item.aisle) {
+      this.askQuestionAisle(item);
+    }
+  }
+
+  askQuestionAisle(item){
+    this.dialogsService
+      .ask('What aisle are you on?')
+      .subscribe(res => {
+        item.aisle = res.value.answer;
+        if (res) {
+          console.log("Updating Item Aisle")
+          this.itemsService.updateItem(item)
+          .subscribe(
+            resp => {
+              console.log(resp);
+            }, error => {
+              this.error = error;
+            }
+          );
+        }
+      });
   }
 
 }

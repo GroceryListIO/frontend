@@ -11,6 +11,7 @@ import { AuthService } from './_services/auth/auth.service';
 import { ListsService } from './_services/lists/lists.service';
 import { ItemsService } from './_services/items/items.service';
 import { ConfirmDialogService } from './_services/confirm-dialog/confirm-dialog.service';
+import { ItemQuestionDialogService } from './_services/item-question-dialog/item-question-dialog.service';
 import { JsonPipe } from './_services/json.pipe';
 
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { GrocerylistComponent } from './_components/grocerylist/grocerylist.comp
 import { HomepageComponent } from './_pages/homepage/homepage.component';
 import { HomepageCtaComponent } from './_components/homepage-cta/homepage-cta.component';
 import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
+import { ItemQuestionDialogComponent } from './_components/item-question-dialog/item-question-dialog.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     EditItemDialog,
     HomepageComponent,
     HomepageCtaComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ItemQuestionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,8 +61,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MaterialModule
   ],
-  entryComponents: [ EditItemDialog, ConfirmDialogComponent ],
-  providers: [AuthService, ListsService, ItemsService, ConfirmDialogService],
+  entryComponents: [ EditItemDialog, ConfirmDialogComponent, ItemQuestionDialogComponent ],
+  providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
