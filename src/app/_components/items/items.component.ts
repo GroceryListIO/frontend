@@ -34,8 +34,6 @@ export class ItemsComponent implements OnInit {
   }
 
   editItemDialog(item) {
-    console.log("edit item");
-    console.log(item);
     this.dialog.open(EditItemDialog, {data: item});
   }
 
@@ -96,13 +94,10 @@ export class EditItemDialog {
   constructor(@Inject(MD_DIALOG_DATA) public item: any, private itemsService: ItemsService, public dialogRef: MdDialogRef<EditItemDialog>) { }
 
   updateItem(editForm: NgForm){
-    console.log("form submission");
-    console.log(editForm.value);
-    console.log(editForm.value.id);
     this.itemsService.updateItem(editForm.value)
     .subscribe(
       resp => {
-        console.log(resp);
+        //console.log(resp);
         this.dialogRef.close();
       }, error => {
         console.log(error);

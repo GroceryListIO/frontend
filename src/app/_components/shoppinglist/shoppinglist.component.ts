@@ -34,7 +34,6 @@ export class ShoppinglistComponent implements OnInit {
     this.itemsService.updateItem(item)
     .subscribe(
       resp => {
-        console.log(resp);
         this.askQuestion(item);
       }, error => {
         this.error = error;
@@ -55,11 +54,9 @@ export class ShoppinglistComponent implements OnInit {
       .subscribe(res => {
         item.aisle = res.value.answer;
         if (res) {
-          console.log("Updating Item Aisle")
           this.itemsService.updateItem(item)
           .subscribe(
             resp => {
-              console.log(resp);
             }, error => {
               this.error = error;
             }
