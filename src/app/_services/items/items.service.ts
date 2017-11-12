@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
 
 import { AuthService } from '../auth/auth.service';
@@ -19,7 +20,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:3000/api/lists/" + id + "/items";
+    let url = environment.api_host + "/api/lists/" + id + "/items";
 
     return this.http.get(url, options)
       .map((response: Response) => {
@@ -32,7 +33,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:3000/api/items/";
+    let url = environment.api_host + "/api/items/";
     item.listId = this.listID;
 
     return this.http.post(url, item, options)
@@ -46,7 +47,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:3000/api/items/" + item.id;
+    let url = environment.api_host + "/api/items/" + item.id;
 
     return this.http.patch(url, item, options)
       .map((response: Response) => {
@@ -69,7 +70,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = "http://localhost:3000/api/lists/" + this.listID + "/items/" + itemID;
+    let url = environment.api_host + "/api/lists/" + this.listID + "/items/" + itemID;
 
     return this.http.delete(url, options)
       .map((response: Response) => {
