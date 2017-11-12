@@ -20,7 +20,7 @@ export class ListsComponent implements OnInit {
     this.listsService.getLists()
     .subscribe(
       resp => {
-        //console.log(this.listsService.lists);
+        // console.log(this.listsService.lists);
       }, error => {
         this.error = error;
       }
@@ -31,7 +31,7 @@ export class ListsComponent implements OnInit {
     this.listsService.newList({name: f.value.name})
     .subscribe(
       resp => {
-        //console.log(this.listsService.lists);
+        // console.log(this.listsService.lists);
       }, error => {
         this.error = error;
       }
