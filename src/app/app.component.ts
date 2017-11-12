@@ -10,5 +10,5 @@ import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists
 })
 export class AppComponent {
   title = 'GroceryList.io';
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 }

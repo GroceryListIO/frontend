@@ -8,7 +8,7 @@ import { ListsService } from '../../_services/lists/lists.service';
 })
 export class SidebarListsComponent implements OnInit {
   error = '';
-  constructor(private listsService: ListsService) { }
+  constructor(public listsService: ListsService) { }
 
   ngOnInit() {
     // get users from secure api end point

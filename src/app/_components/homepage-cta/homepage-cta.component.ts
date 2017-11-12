@@ -12,7 +12,7 @@ import { AuthService } from '../../_services/auth/auth.service';
 export class HomepageCtaComponent implements OnInit {
   error = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
   }

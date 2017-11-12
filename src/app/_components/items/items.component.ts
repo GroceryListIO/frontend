@@ -16,7 +16,7 @@ export class ItemsComponent implements OnInit {
   error = '';
   editingItem = {};
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MatDialog, private dialogsService: ConfirmDialogService) { }
+  constructor(public itemsService: ItemsService, public route:ActivatedRoute, public dialog: MatDialog, public dialogsService: ConfirmDialogService) { }
 
   ngOnInit() {
     // get items
@@ -91,7 +91,7 @@ export class ItemsComponent implements OnInit {
 })
 export class EditItemDialog {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public item: any, private itemsService: ItemsService, public dialogRef: MatDialogRef<EditItemDialog>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public item: any, public itemsService: ItemsService, public dialogRef: MatDialogRef<EditItemDialog>) { }
 
   updateItem(editForm: NgForm){
     this.itemsService.updateItem(editForm.value)

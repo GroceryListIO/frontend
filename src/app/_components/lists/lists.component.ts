@@ -13,7 +13,7 @@ import { ListsService } from '../../_services/lists/lists.service';
 export class ListsComponent implements OnInit {
   error = '';
 
-  constructor(private listsService: ListsService, private authService: AuthService) { }
+  constructor(public listsService: ListsService, public authService: AuthService) { }
 
   ngOnInit() {
     // get users from secure api end point

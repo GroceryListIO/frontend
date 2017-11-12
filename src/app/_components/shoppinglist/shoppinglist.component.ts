@@ -14,7 +14,7 @@ export class ShoppinglistComponent implements OnInit {
   listID = '';
   error = '';
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute, private dialogsService: ItemQuestionDialogService) { }
+  constructor(public itemsService: ItemsService, public route:ActivatedRoute, public dialogsService: ItemQuestionDialogService) { }
 
   ngOnInit() {
     this.listID = this.route.snapshot.params['listID'];
