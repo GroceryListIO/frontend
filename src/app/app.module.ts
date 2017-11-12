@@ -4,7 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import {MaterialModule} from '@angular/material';
+//import {MaterialModule} from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import 'hammerjs';
 
 import { AuthService } from './_services/auth/auth.service';
@@ -59,7 +68,14 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    MaterialModule
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatInputModule,
+    MatTabsModule,
+    MatGridListModule,
+    BrowserAnimationsModule,
   ],
   entryComponents: [ EditItemDialog, ConfirmDialogComponent, ItemQuestionDialogComponent ],
   providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService],

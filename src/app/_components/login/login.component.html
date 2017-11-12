@@ -5,16 +5,16 @@
 
   <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
 
-    <md-input-container>
-      <input mdInput placeholder="Email..." name="email" ngModel required>
-    </md-input-container><br>
+    <mat-form-field>
+      <input matInput placeholder="Email..." name="email" ngModel required>
+    </mat-form-field><br>
 
-    <md-input-container>
-      <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
-    </md-input-container><br>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password..." name="password" ngModel required>
+    </mat-form-field><br>
 
-    <button md-raised-button>Login</button>
-    <button md-button type=button routerLink="/register">Register</button>
+    <button mat-raised-button>Login</button>
+    <button mat-button type=button routerLink="/register">Register</button>
 
   </form>
 </div>

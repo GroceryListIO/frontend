@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
-import {MdDialog, MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
 import { ConfirmDialogService } from '../../_services/confirm-dialog/confirm-dialog.service';
@@ -16,7 +16,7 @@ export class ItemsComponent implements OnInit {
   error = '';
   editingItem = {};
 
-  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MdDialog, private dialogsService: ConfirmDialogService) { }
+  constructor(private itemsService: ItemsService, private route:ActivatedRoute, public dialog: MatDialog, private dialogsService: ConfirmDialogService) { }
 
   ngOnInit() {
     // get items
@@ -91,7 +91,7 @@ export class ItemsComponent implements OnInit {
 })
 export class EditItemDialog {
 
-  constructor(@Inject(MD_DIALOG_DATA) public item: any, private itemsService: ItemsService, public dialogRef: MdDialogRef<EditItemDialog>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public item: any, private itemsService: ItemsService, public dialogRef: MatDialogRef<EditItemDialog>) { }
 
   updateItem(editForm: NgForm){
     this.itemsService.updateItem(editForm.value)

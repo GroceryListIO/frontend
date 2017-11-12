@@ -3,18 +3,18 @@
   <h3 *ngIf="listsService.lists && listsService.lists.length == 0">Create your first list.</h3>
   <p *ngIf="listsService.lists && listsService.lists.length == 0">Shopping lists should correlate to a store such as Walmart or Costco.</p>
 
-  <md-list>
-   <md-list-item *ngFor='let list of listsService.lists' routerLink="/lists/{{list.id}}">
-     <h4 md-line>{{list.name}}</h4>
-     <p md-line> {{list.description}} </p>
-     <p md-line *ngIf="!list.description">No description</p>
-   </md-list-item>
-  </md-list>
+  <mat-list>
+   <mat-list-item *ngFor='let list of listsService.lists' routerLink="/lists/{{list.id}}">
+     <h4 mat-line>{{list.name}}</h4>
+     <p mat-line> {{list.description}} </p>
+     <p mat-line *ngIf="!list.description">No description</p>
+   </mat-list-item>
+  </mat-list>
 
   <form #f="ngForm" (ngSubmit)="newList(f)" novalidate>
-    <md-input-container>
-      <input mdInput placeholder="Store Name..." name="name" id="name" ngModel required>
-    </md-input-container>
-    <button md-button>Create</button>
+    <mat-form-field>
+      <input matInput placeholder="Store Name..." name="name" id="name" ngModel required>
+    </mat-form-field>
+    <button mat-button>Create</button>
   </form>
 </div>

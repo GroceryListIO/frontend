@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-item-question-dialog',
@@ -12,7 +12,7 @@ export class ItemQuestionDialogComponent implements OnInit {
   public value: string; // Value to update in item object,
   public fieldType: string; // Type of input field
 
-  constructor(public dialogRef: MdDialogRef<ItemQuestionDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<ItemQuestionDialogComponent>) { }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {MdDialog, MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
 import { ItemQuestionDialogService } from '../../_services/item-question-dialog/item-question-dialog.service';

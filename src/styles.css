@@ -1,4 +1,4 @@
-html, body, material-app, md-sidenav-container, .sidenav-content {
+html, body, material-app, mat-sidenav-container, .sidenav-content {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -21,7 +21,7 @@ html, body, material-app, md-sidenav-container, .sidenav-content {
     }
 }
 
-md-sidenav {
+mat-sidenav {
   min-width: 256px !important;
 }
 
@@ -38,12 +38,12 @@ md-sidenav {
 }
 
 
-md-tab-body, .mat-tab-body-content {
+mat-tab-body, .mat-tab-body-content {
   overflow-y: hidden !important;
 }
-md-tab-header {
+mat-tab-header {
   margin-left: -15px;
   margin-right: -15px;
 }
 
-@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css'
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';

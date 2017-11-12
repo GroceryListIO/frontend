@@ -5,20 +5,20 @@
 
   <form #f="ngForm" (ngSubmit)="register(f)">
 
-    <md-input-container style="width: 100%">
-      <input mdInput placeholder="Email..." name="email" ngModel required>
-    </md-input-container><br>
+    <mat-input-container style="width: 100%">
+      <input matInput placeholder="Email..." name="email" ngModel required>
+    </mat-input-container><br>
 
-    <md-input-container style="width: 100%">
-      <input mdInput type="password" placeholder="Password..." name="password" ngModel required>
-    </md-input-container><br>
+    <mat-input-container style="width: 100%">
+      <input matInput type="password" placeholder="Password..." name="password" ngModel required>
+    </mat-input-container><br>
 
-    <button md-raised-button>Register</button>
+    <button mat-raised-button>Register</button>
 
   </form>
 </div>
 
 <div  *ngIf="authService.isAuthenticated">
   <h2>Welcome Back</h2>
-  <button md-raised-button routerLink="lists" style="float: right">View your lists <md-icon>keyboard_arrow_right</md-icon></button>
+  <button mat-raised-button routerLink="lists" style="float: right">View your lists <mat-icon>keyboard_arrow_right</mat-icon></button>
 </div>
