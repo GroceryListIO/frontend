@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import 'hammerjs';
 
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    MatDialogModule,
   ],
   entryComponents: [ EditItemDialog, ConfirmDialogComponent, ItemQuestionDialogComponent ],
   providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService],
