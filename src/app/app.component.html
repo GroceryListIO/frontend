@@ -16,7 +16,7 @@
     <mat-toolbar>
       <mat-icon id="mainMenu" (click)="sidenav.open()">menu</mat-icon>
 
-      <a routerLink="" *ngIf="!authService.isAuthenticated">{{title}}</a>
+      <a routerLink="/login" *ngIf="!authService.isAuthenticated">{{title}}</a>
       <a routerLink="/lists" *ngIf="authService.isAuthenticated">{{title}}</a>
 
       <div style="margin-left: auto; padding-right: 15px;" *ngIf="!authService.isAuthenticated">

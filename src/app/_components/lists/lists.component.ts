@@ -23,6 +23,9 @@ export class ListsComponent implements OnInit {
         // console.log(this.listsService.lists);
       }, error => {
         this.error = error;
+        if (error.status == 401) {
+          this.authService.logout();
+        }
       }
     );
   }

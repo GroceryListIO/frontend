@@ -40,7 +40,7 @@ import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dia
 import { ItemQuestionDialogComponent } from './_components/item-question-dialog/item-question-dialog.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', redirectTo: 'lists', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'lists', component: ListsComponent },

@@ -56,7 +56,7 @@ export class AuthService {
     this.isAuthenticated = false;
     this.token = null;
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
 }
