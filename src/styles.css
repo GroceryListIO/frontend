@@ -25,6 +25,10 @@ mat-sidenav {
   min-width: 256px !important;
 }
 
+mat-sidenav a {
+  text-decoration: none;
+}
+
 .title {
   line-height: 64px;
   padding-left: 40px;
