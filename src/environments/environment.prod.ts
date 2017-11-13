@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_host: 'http://api.grocerylist.io',
+  api_host: 'https://api.grocerylist.io',
 };
