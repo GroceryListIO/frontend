@@ -15,10 +15,10 @@ export class ListsService {
 
   getLists(): Observable<Array<any>> {
     let params = new URLSearchParams;
-    params.set('filter', JSON.stringify({'where': {'userId': this.authService.userId}}) );
+    // params.set('filter', JSON.stringify({'where': {'userId': this.authService.userId}}) ); // Leaving in as a good example
     params.set('access_token', this.authService.token)
 
-    return this.http.get(environment.api_host + '/api/lists', { search: params })
+    return this.http.get(environment.api_host + '/api/lists/myLists', { search: params })
       .map((response: Response) => {
         this.lists = response.json();
         return response.json();
