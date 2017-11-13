@@ -34,8 +34,6 @@ import { ItemsComponent, EditItemDialog } from './_components/items/items.compon
 import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists.component';
 import { ShoppinglistComponent } from './_components/shoppinglist/shoppinglist.component';
 import { GrocerylistComponent } from './_components/grocerylist/grocerylist.component';
-import { HomepageComponent } from './_pages/homepage/homepage.component';
-import { HomepageCtaComponent } from './_components/homepage-cta/homepage-cta.component';
 import { ConfirmDialogComponent } from './_components/confirm-dialog/confirm-dialog.component';
 import { ItemQuestionDialogComponent } from './_components/item-question-dialog/item-question-dialog.component';
 
@@ -60,8 +58,6 @@ const appRoutes: Routes = [
     ShoppinglistComponent,
     GrocerylistComponent,
     EditItemDialog,
-    HomepageComponent,
-    HomepageCtaComponent,
     ConfirmDialogComponent,
     ItemQuestionDialogComponent
   ],
