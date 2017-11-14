@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<boolean> {
-    return this.http.post(environment.api_host + '/api/Users/login', { email: email, password: password })
+    return this.http.post(environment.api_host + '/api/users/login', { email: email, password: password })
       .map((response: Response) => {
         console.log("logging in");
         console.log(response.json());
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   register(email: string, password: string): Observable<void> {
-    return this.http.post(environment.api_host + '/api/Users', { email: email, password: password })
+    return this.http.post(environment.api_host + '/api/users', { email: email, password: password })
       .map((response: Response) => {
         console.log("Registration complete");
         console.log(response.json());
