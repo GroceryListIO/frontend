@@ -20,7 +20,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = environment.api_host + "/api/lists/" + id + "/items";
+    let url = environment.api_host + "/api/users/" + this.authService.userId + "/items/?filter[where][listId]=" + id;
 
     return this.http.get(url, options)
       .map((response: Response) => {
@@ -33,7 +33,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = environment.api_host + "/api/items/";
+    let url = environment.api_host + "/api/users/" + this.authService.userId + "/items/";
     item.listId = this.listID;
 
     return this.http.post(url, item, options)
@@ -47,9 +47,9 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = environment.api_host + "/api/items/" + item.id;
+    let url = environment.api_host + "/api/users/" + this.authService.userId + "/items/" + item.id;
 
-    return this.http.patch(url, item, options)
+    return this.http.put(url, item, options)
       .map((response: Response) => {
 
         console.log(response.status);
@@ -70,7 +70,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = environment.api_host + "/api/lists/" + this.listID + "/items/" + itemID;
+    let url = environment.api_host + "/api/users/" + this.authService.userId + "/items/" + itemID;
 
     return this.http.delete(url, options)
       .map((response: Response) => {

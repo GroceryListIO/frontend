@@ -18,7 +18,7 @@ export class ListsService {
     // params.set('filter', JSON.stringify({'where': {'userId': this.authService.userId}}) ); // Leaving in as a good example
     params.set('access_token', this.authService.token)
 
-    return this.http.get(environment.api_host + '/api/lists/myLists', { search: params })
+    return this.http.get(environment.api_host + '/api/users/' + this.authService.userId + '/lists/', { search: params })
       .map((response: Response) => {
         this.lists = response.json();
         return response.json();
@@ -29,7 +29,7 @@ export class ListsService {
     let params = new URLSearchParams;
     params.set('access_token', this.authService.token)
 
-    return this.http.get(environment.api_host + '/api/lists/' + listId, { search: params })
+    return this.http.get(environment.api_host + '/api/users/' + this.authService.userId + '/lists/' + listId, { search: params })
       .map((response: Response) => {
         this.lists = response.json();
         return response.json();
@@ -40,7 +40,7 @@ export class ListsService {
     let params = new URLSearchParams;
     params.set('access_token', this.authService.token)
 
-    return this.http.post(environment.api_host + '/api/lists', list, { search: params })
+    return this.http.post(environment.api_host + '/api/users/' + this.authService.userId + '/lists/', list, { search: params })
       .map((response: Response) => {
         this.lists.push(response.json());
         console.log(response.json());
