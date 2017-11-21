@@ -18,10 +18,7 @@
 
       <a routerLink="/login" *ngIf="!authService.isAuthenticated">{{title}}</a>
       <a routerLink="/lists" *ngIf="authService.isAuthenticated">{{title}}</a>
-
-      <div style="margin-left: auto; padding-right: 15px;" *ngIf="!authService.isAuthenticated">
-        <a routerLink="/login">Login</a> / <a routerLink="/register"><b>Register</b></a>
-      </div>
+      
     </mat-toolbar>
 
     <div class="page-container"><router-outlet></router-outlet></div>
