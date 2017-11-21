@@ -1,27 +1,21 @@
 <h3 *ngIf="itemsService.items && itemsService.items.length == 0">No Items</h3>
 <p *ngIf="itemsService.items && itemsService.items.length == 0">Grocery list is empty, please add some items first.</p>
 
-<table *ngIf="itemsService.items && itemsService.items.length > 0">
-  <tr>
-    <th>
-    <th class="text-left name">Name</th>
-    <th class="text-center">Need</th>
-    <th class="text-right">Aisle</th>
-  </tr>
-  <tr *ngFor='let item of itemsService.items'>
-    <!-- Controls -->
-    <td *ngIf='(item.inventory - item.quantity) > 0'><button mat-mini-fab (click)="gotItem(item)"><mat-icon>check</mat-icon></button></td>
-    <td *ngIf='(item.inventory - item.quantity) < 1'></td>
+<mat-list>
+  <mat-list-item *ngFor='let item of itemsService.items'>
 
-    <!-- Name -->
-    <td>{{item.name}}</td>
+    <button mat-mini-fab (click)="gotItem(item)" *ngIf='(item.inventory - item.quantity) > 0'>
+      <mat-icon>check</mat-icon>
+    </button>
+    <p matLine *ngIf='(item.inventory - item.quantity) > 0'>
+      {{item.inventory - item.quantity}} <b>{{item.name}}</b>
+    </p>
+    <p matLine *ngIf='(item.inventory - item.quantity) > 0 && item.aisle'>
+       &nbsp; &nbsp; on aisle <b>{{item.aisle}}</b>
+    </p>
+    <p matLine *ngIf='(item.inventory - item.quantity) < 1'>
+      <b>{{item.name}}</b><br>You don't need this item.
+    </p>
 
-    <!-- Needed -->
-    <td class="text-center">{{item.inventory - item.quantity}}</td>
-
-    <!-- Aisle -->
-    <td *ngIf='item.aisle' class="text-right">{{item.aisle}}</td>
-    <td *ngIf='!item.aisle' class="text-right"></td>
-
-  </tr>
-</table>
+  </mat-list-item>
+</mat-list>
