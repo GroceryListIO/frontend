@@ -1,0 +1,26 @@
+{
+  "short_name": "GroceryList",
+  "name": "GroceryList.io",
+  "icons": [
+    {
+      "src": "/assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo_transparent_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/lists",
+  "theme_color": "#579c1a",
+  "background_color": "#579c1a",
+  "display": "standalone",
+  "orientation": "portrait"
+}
