@@ -1,44 +1,27 @@
 <h3 *ngIf="itemsService.items && itemsService.items.length == 0">Add an item</h3>
 
-<table *ngIf="itemsService.items && itemsService.items.length > 0">
-  <tr>
-    <th></th>
-    <th class="name">Name</th>
-    <th>On hand</th>
-    <th>Desired</th>
-    <th></th>
-  </tr>
-  <tr *ngFor='let item of itemsService.items'>
-
-    <td>
-      <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="editItemDialog(item)">
-        <mat-icon mat-list-icon>mode_edit</mat-icon>
-      </a>
-    </td>
-    <td>{{item.name}}</td>
-    <td>{{item.quantity}}</td>
-    <td>{{item.inventory}}</td>
-    <td>
-      <a class="mdl-list__item-secondary-action" href="javascript:void(0);" (click)="deleteItem(item.id)">
-        <mat-icon mat-list-icon>remove_circle_outline</mat-icon>
-      </a>
-    </td>
-
-  </tr>
-</table>
+<mat-list>
+  <mat-list-item *ngFor='let item of itemsService.items'>
+    <button mat-icon-button (click)="editItemDialog(item)">
+      <mat-icon>mode_edit</mat-icon>
+    </button>
+    <h3 matLine> {{item.name}} </h3>
+    <p matLine>
+      <span> Desired stock </span>
+      <span> {{item.inventory}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>
 
 <form  mat-line #f="ngForm" (ngSubmit)="newItem(f)">
   <p>
     <mat-input-container class="full-width">
-      <input matInput  mat-line placeholder="Item..." name="name" ngModel required autocomplete="off">
+      <input matInput  mat-line placeholder="What do you want?" name="name" ngModel required autocomplete="off">
     </mat-input-container>
   </p>
   <p>
-    <mat-input-container class="half-width">
-      <input matInput mat-line placeholder="How many do you have?" type="number" value='1' name="quantity" ngModel required autocomplete="off">
-    </mat-input-container>
-    <mat-input-container class="half-width">
-      <input matInput mat-line placeholder="How many do you want to have?" type="number" value='1' name="inventory" ngModel required autocomplete="off">
+    <mat-input-container class="full-width">
+      <input matInput mat-line placeholder="How many do you need?" type="number" value='1' name="inventory" ngModel required autocomplete="off">
     </mat-input-container>
   </p>
   <button mat-button>Submit</button><br>
