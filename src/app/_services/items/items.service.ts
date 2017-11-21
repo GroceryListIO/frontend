@@ -20,7 +20,7 @@ export class ItemsService {
     // add jwt token to headers
     let headers = new Headers({ 'Authorization': this.authService.token });
     let options = new RequestOptions({ headers: headers });
-    let url = environment.api_host + "/api/users/" + this.authService.userId + "/items/?filter[where][listId]=" + id;
+    let url = environment.api_host + "/api/users/" + this.authService.userId + "/items/?filter[where][listId]=" + id + "&filter[order]=aisle";
 
     return this.http.get(url, options)
       .map((response: Response) => {
@@ -52,8 +52,6 @@ export class ItemsService {
     return this.http.put(url, item, options)
       .map((response: Response) => {
 
-        console.log(response.status);
-
         if (response.status === 200) { // Update in memoery items
           for (var i = 0; i < this.items.length; i++) {
             if (this.items[i].id == response.json().id) {
@@ -61,8 +59,8 @@ export class ItemsService {
             }
           }
         }
-
         return response.json();
+
       });
   }
 
