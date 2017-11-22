@@ -13,21 +13,40 @@
   </mat-list-item>
 </mat-list>
 
-<form  mat-line #f="ngForm" (ngSubmit)="newItem(f)">
-  <p>
-    <mat-input-container class="full-width">
-      <input matInput  mat-line placeholder="What do you want?" name="name" ngModel required autocomplete="off">
-    </mat-input-container>
-  </p>
-  <p>
-    <mat-input-container class="full-width">
-      <input matInput mat-line placeholder="How many do you have?" type="number" value='1' name="quantity" ngModel required autocomplete="off">
-    </mat-input-container>
-  </p>
-  <p>
-    <mat-input-container class="full-width">
-      <input matInput mat-line placeholder="How many do you want?" type="number" value='1' name="inventory" ngModel required autocomplete="off">
-    </mat-input-container>
-  </p>
-  <button mat-button>Submit</button><br>
-</form>
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <mat-form-field>
+        <input name="name" formControlName="name" placeholder="What do you want?" matInput ngModel required autocomplete="off">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext (click)="autoSelect('mat-input-1')">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field>
+        <input name="quantity" formControlName="quantity" placeholder="How many do you have?" type="number" matInput mat-line ngModel
+          required autocomplete="off">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <mat-form-field>
+        <input name="inventory" formControlName="inventory" placeholder="How many do you want?" type="number" matInput mat-line ngModel
+          required autocomplete="off">
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="submitNewItem(stepper)">Done</button>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

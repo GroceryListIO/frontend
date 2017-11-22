@@ -1,3 +1,5 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 html, body, material-app, mat-sidenav-container, .sidenav-content {
   margin: 0;
   width: 100%;
@@ -21,18 +23,6 @@ html, body, material-app, mat-sidenav-container, .sidenav-content {
     }
 }
 
-mat-toolbar {
-  background-color: #59bd13 !important;
-}
-
-mat-sidenav {
-  min-width: 256px !important;
-}
-
-mat-sidenav a {
-  text-decoration: none;
-}
-
 .title {
   line-height: 64px;
   padding-left: 40px;
@@ -54,4 +44,15 @@ mat-tab-header {
   margin-right: -15px;
 }
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/* Stepper stuff */
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: transparent;
+}
+
+.mat-horizontal-content-container {
+  padding: 24px !important;
+}
+
+.mat-horizontal-stepper-header-container {
+    display: none !important;
+}

@@ -16,6 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { MatStepperModule } from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import 'hammerjs';
 
 import { AuthService } from './_services/auth/auth.service';
@@ -64,6 +67,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     MatToolbarModule,
@@ -76,6 +80,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatStepperModule,
   ],
   entryComponents: [ EditItemDialog, ConfirmDialogComponent, ItemQuestionDialogComponent ],
   providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService],

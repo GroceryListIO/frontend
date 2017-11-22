@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material';
+
 import { ItemsService } from '../../_services/items/items.service';
 import { ConfirmDialogService } from '../../_services/confirm-dialog/confirm-dialog.service';
 
@@ -12,13 +15,27 @@ import { ConfirmDialogService } from '../../_services/confirm-dialog/confirm-dia
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
   listID = '';
   error = '';
   editingItem = {};
 
-  constructor(public itemsService: ItemsService, public route:ActivatedRoute, public dialog: MatDialog, public dialogsService: ConfirmDialogService) { }
+  constructor(public itemsService: ItemsService, public route: ActivatedRoute, public dialog: MatDialog, public dialogsService: ConfirmDialogService, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+    this.firstFormGroup = this._formBuilder.group({
+      name: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      quantity: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      inventory: ['', Validators.required]
+    });
+
     // get items
     this.getItems();
 
@@ -42,27 +59,44 @@ export class ItemsComponent implements OnInit {
     this.itemsService.getItems(this.listID)
     .subscribe(
       resp => {
-        //console.log("Items: ");
-        //console.log(resp);
+        // console.log("Items: ");
+        // console.log(resp);
       }, error => {
         this.error = error;
       }
     );
   }
 
-  newItem(f: NgForm) {
-    this.itemsService.newItem({name: f.value.name, inventory: f.value.inventory, quantity: f.value.quantity })
+  newItem(name: string, inventory: number, quantity: number) {
+    this.itemsService.newItem({name: name, inventory: inventory, quantity: quantity })
     .subscribe(
       resp => {
-        //console.log(resp);
-        f.reset();
+        // console.log(resp);
       }, error => {
         this.error = error;
       }
     );
   }
 
-  deleteItem(itemID){
+  submitNewItem(stepper: MatStepper) {
+    // Submit the new item
+    this.newItem(
+      this.firstFormGroup.controls.name.value,
+      this.secondFormGroup.controls.quantity.value,
+      this.thirdFormGroup.controls.inventory.value
+    );
+    // Reset the form
+    stepper.selectedIndex = 0;
+    this.firstFormGroup.controls.name.clearValidators();
+    this.secondFormGroup.controls.quantity.clearValidators();
+    this.thirdFormGroup.controls.inventory.clearValidators();
+    this.firstFormGroup.reset();
+    this.secondFormGroup.reset();
+    this.thirdFormGroup.reset();
+  }
+
+
+  deleteItem(itemID) {
 
     this.dialogsService
       .confirm('Delete Item', 'Are you sure you want to delete this item?', "Delete", "Cancel")
