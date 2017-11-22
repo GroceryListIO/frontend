@@ -29,7 +29,7 @@ export class ShoppinglistComponent implements OnInit {
     );
   }
 
-  gotItem(item){
+  gotItem(item) {
     item.quantity = item.inventory;
     this.itemsService.updateItem(item)
     .subscribe(

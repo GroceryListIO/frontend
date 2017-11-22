@@ -69,7 +69,6 @@ export class ItemsService {
   }
 
   calculateShoppingList() {
-    console.log('Caluclating the shopping List');
     this.shoppingItems = [];
     for (let i = 0; i < this.items.length; i++) {
       if ((this.items[i].inventory - this.items[i].quantity) < 1) { continue } // Skip if they need less than 1
