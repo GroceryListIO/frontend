@@ -21,6 +21,10 @@ html, body, material-app, mat-sidenav-container, .sidenav-content {
     }
 }
 
+mat-toolbar {
+  background-color: #59bd13 !important;
+}
+
 mat-sidenav {
   min-width: 256px !important;
 }
