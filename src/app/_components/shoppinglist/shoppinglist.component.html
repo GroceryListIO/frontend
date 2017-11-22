@@ -2,7 +2,7 @@
 <p *ngIf="itemsService.items && itemsService.items.length == 0">Grocery list is empty, please add some items first.</p>
 
 <mat-list>
-  <mat-list-item *ngFor='let item of itemsService.items'>
+  <mat-list-item *ngFor='let item of itemsService.shoppingItems'>
 
     <button mat-mini-fab (click)="gotItem(item)" *ngIf='(item.inventory - item.quantity) > 0'>
       <mat-icon>check</mat-icon>
