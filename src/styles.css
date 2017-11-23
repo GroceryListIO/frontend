@@ -48,6 +48,10 @@ mat-tab-header {
   background-color: #59bd13;
 }
 
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #59bd13;
+}
+
 /* Stepper stuff */
 .mat-stepper-horizontal, .mat-stepper-vertical {
   background-color: transparent;
