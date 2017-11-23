@@ -22,3 +22,6 @@ button {
   width: 100%;
 }
 
+mat-list-item p, mat-list-item h3 {
+  cursor: pointer;
+}

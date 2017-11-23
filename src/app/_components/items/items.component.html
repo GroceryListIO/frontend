@@ -2,11 +2,11 @@
 
 <mat-list>
   <mat-list-item *ngFor='let item of itemsService.items'>
-    <button mat-icon-button (click)="editItemDialog(item)">
-      <mat-icon>mode_edit</mat-icon>
+    <button mat-icon-button (click)='deleteItem(item.id)'>
+      <mat-icon md-list-icon>remove_circle_outline</mat-icon>
     </button>
-    <h3 matLine> {{item.name}} </h3>
-    <p matLine>
+    <h3 matLine (click)="editItemDialog(item)"> {{item.name}} </h3>
+    <p matLine (click)="editItemDialog(item)">
       <span> Desired stock </span>
       <span> {{item.inventory}} </span>
     </p>
