@@ -44,6 +44,10 @@ mat-tab-header {
   margin-right: -15px;
 }
 
+.mat-mini-fab.mat-accent {
+  background-color: #59bd13;
+}
+
 /* Stepper stuff */
 .mat-stepper-horizontal, .mat-stepper-vertical {
   background-color: transparent;
