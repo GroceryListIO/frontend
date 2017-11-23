@@ -67,7 +67,7 @@ export class ItemsComponent implements OnInit {
     );
   }
 
-  newItem(name: string, inventory: number, quantity: number) {
+  newItem(name: string, quantity: number, inventory: number) {
     this.itemsService.newItem({name: name, inventory: inventory, quantity: quantity })
     .subscribe(
       resp => {

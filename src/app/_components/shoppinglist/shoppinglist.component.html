@@ -4,7 +4,7 @@
 <mat-list>
   <mat-list-item *ngFor='let item of itemsService.shoppingItems'>
 
-    <button mat-mini-fab (click)="gotItem(item)" *ngIf='(item.inventory - item.quantity) > 0'>
+    <button mat-button (click)="gotItem(item)" *ngIf='(item.inventory - item.quantity) > 0'>
       <mat-icon>check</mat-icon>
     </button>
     <p matLine *ngIf='(item.inventory - item.quantity) > 0'>
