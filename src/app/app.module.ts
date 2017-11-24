@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,11 +16,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-
 import { MatStepperModule } from '@angular/material/stepper';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import 'hammerjs';
+import { GoogleAnalyticsEventsService } from './_services/ga/google-analytics-events.service';
 
 import { AuthService } from './_services/auth/auth.service';
 import { ListsService } from './_services/lists/lists.service';
@@ -83,7 +83,7 @@ const appRoutes: Routes = [
     MatStepperModule,
   ],
   entryComponents: [ EditItemDialog, ConfirmDialogComponent, ItemQuestionDialogComponent ],
-  providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService],
+  providers: [AuthService, ListsService, ItemsService, ConfirmDialogService, ItemQuestionDialogService, GoogleAnalyticsEventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

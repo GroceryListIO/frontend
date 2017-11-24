@@ -5,13 +5,14 @@ import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
 
 import { AuthService } from '../auth/auth.service';
+import { GoogleAnalyticsEventsService } from '../ga/google-analytics-events.service';
 
 @Injectable()
 export class ListsService {
 
   public lists: Array<any>;
 
-  constructor(private http: Http, private authService: AuthService) {}
+  constructor(private http: Http, private authService: AuthService, public googleAnalyticsEventsService: GoogleAnalyticsEventsService) {}
 
   getLists(): Observable<Array<any>> {
     let params = new URLSearchParams;
@@ -44,6 +45,7 @@ export class ListsService {
       .map((response: Response) => {
         this.lists.push(response.json());
         console.log(response.json());
+        this.googleAnalyticsEventsService.emitEvent('List', 'Create');
         return response.json();
       });
   }

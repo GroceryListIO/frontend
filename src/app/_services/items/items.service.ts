@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
 
 import { AuthService } from '../auth/auth.service';
+import { GoogleAnalyticsEventsService } from '../ga/google-analytics-events.service';
 
 @Injectable()
 export class ItemsService {
@@ -13,7 +14,7 @@ export class ItemsService {
   public shoppingItems: Array<any>;
   listID: string;
 
-  constructor(private http: Http, private authService: AuthService) { }
+  constructor(private http: Http, private authService: AuthService, public googleAnalyticsEventsService: GoogleAnalyticsEventsService) { }
 
   getItems(id: string): Observable<boolean> {
     this.listID = id;
@@ -42,6 +43,7 @@ export class ItemsService {
       .map((response: Response) => {
         this.items.push(response.json());
         this.calculateShoppingList();
+        this.googleAnalyticsEventsService.emitEvent('Item', 'Create');
         return response.json();
       });
   }
@@ -63,6 +65,7 @@ export class ItemsService {
           }
         }
         this.calculateShoppingList();
+        this.googleAnalyticsEventsService.emitEvent('Item', 'Update');
         return response.json();
 
       });
@@ -91,6 +94,7 @@ export class ItemsService {
             }
           }
         }
+        this.googleAnalyticsEventsService.emitEvent('Item', 'Delete');
         return response;
       });
   }

@@ -5,6 +5,8 @@ import { SidebarListsComponent } from './_components/sidebar-lists/sidebar-lists
 import { Router, NavigationEnd } from '@angular/router';
 import { isDevMode } from '@angular/core';
 
+declare let ga: Function;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
