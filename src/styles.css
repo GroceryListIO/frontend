@@ -64,3 +64,7 @@ mat-tab-header {
 .mat-horizontal-stepper-header-container {
     display: none !important;
 }
+
+.mat-list-item {
+  text-decoration: none;
+}
