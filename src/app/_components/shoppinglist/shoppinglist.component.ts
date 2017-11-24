@@ -4,6 +4,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 import { ItemsService } from '../../_services/items/items.service';
 import { ItemQuestionDialogService } from '../../_services/item-question-dialog/item-question-dialog.service';
+import { GoogleAnalyticsEventsService } from '../../_services/ga/google-analytics-events.service';
 
 @Component({
   selector: 'app-shoppinglist',
@@ -14,7 +15,7 @@ export class ShoppinglistComponent implements OnInit {
   listID = '';
   error = '';
 
-  constructor(public itemsService: ItemsService, public route:ActivatedRoute, public dialogsService: ItemQuestionDialogService) { }
+  constructor(public itemsService: ItemsService, public route: ActivatedRoute, public dialogsService: ItemQuestionDialogService, public googleAnalyticsEventsService: GoogleAnalyticsEventsService) { }
 
   ngOnInit() {
     this.listID = this.route.snapshot.params['listID'];
@@ -31,6 +32,7 @@ export class ShoppinglistComponent implements OnInit {
 
   gotItem(item) {
     item.quantity = item.inventory;
+    this.googleAnalyticsEventsService.emitEvent('Item', 'Bought');
     this.itemsService.updateItem(item)
     .subscribe(
       resp => {
