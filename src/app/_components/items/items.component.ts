@@ -95,7 +95,6 @@ export class ItemsComponent implements OnInit {
     this.thirdFormGroup.reset();
   }
 
-
   deleteItem(itemID) {
 
     this.dialogsService
@@ -116,6 +115,11 @@ export class ItemsComponent implements OnInit {
 
   }
 
+  setFocus(el) {
+    setTimeout(() => {
+      el.focus();
+    }, 50);
+  }
 
 }
 

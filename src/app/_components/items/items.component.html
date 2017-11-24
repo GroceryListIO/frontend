@@ -20,18 +20,18 @@
         <input name="name" formControlName="name" placeholder="What do you want?" matInput ngModel required autocomplete="off">
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext (click)="setFocus(quantity)">Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <mat-form-field>
-        <input name="quantity" formControlName="quantity" placeholder="How many do you have?" type="number" matInput mat-line ngModel
+        <input #quantity name="quantity" formControlName="quantity" placeholder="How many do you have?" type="number" matInput mat-line ngModel
           required autocomplete="off">
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext (click)="setFocus(inventory)">Next</button>
         <button mat-button matStepperPrevious>Back</button>
       </div>
     </form>
@@ -40,7 +40,7 @@
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">
       <mat-form-field>
-        <input name="inventory" formControlName="inventory" placeholder="How many do you want?" type="number" matInput mat-line ngModel
+        <input #inventory name="inventory" formControlName="inventory" placeholder="How many do you want?" type="number" matInput mat-line ngModel
           required autocomplete="off">
       </mat-form-field>
       <div>
